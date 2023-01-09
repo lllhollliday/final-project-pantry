@@ -1,0 +1,13 @@
+.navbar {
+    display: flex;
+    height: 4rem;
+    border: 1px solid black;
+}
+
+.navbar_logo {
+    margin-left: auto;
+}
+
+.navbar_links {
+
+}
