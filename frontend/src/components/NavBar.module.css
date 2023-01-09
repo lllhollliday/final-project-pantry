@@ -1,13 +1,47 @@
 .navbar {
-    display: flex;
-    height: 4rem;
-    border: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  height: 104px;
+  border: 1px solid #fff3d6;
+  padding: 10px;
+  align-items: center;
 }
 
-.navbar_logo {
-    margin-left: auto;
+.navbarLinks {
+  padding: 10px;
 }
 
-.navbar_links {
+.button,
+.landingButton {
+  color: black;
+  text-decoration: none;
+  padding: 3px 35px 3px 35px;
+  margin: 6px;
 
+  font-size: 20px;
+  border-radius: 10px;
+
+  background-color: #fff3d6;
+}
+
+.button {
+  border: solid 1px #ffb8038e;
+  transition: ease-out 0.2s;
+}
+.button:hover {
+  border: solid 1px #ffb803;
+  transition: ease-in 0.1s;
+}
+.landingButton {
+  background-color: #65a46f;
+  transition: ease-out 0.4s;
+}
+.landingButton:hover {
+  background-color: #65a46fe4;
+  transition: ease-in 0.2s;
+}
+
+img {
+  height: 60px;
+  margin-left: 10px;
 }
