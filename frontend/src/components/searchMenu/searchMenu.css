@@ -1,0 +1,26 @@
+.searchMenu {
+    width: 127rem;
+    display: flex;
+}
+
+.searchBar {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+.dropdownMenu {
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+}
+
+.singleDropdown {
+    padding: 1rem;
+}
+
+/* ------------------- */

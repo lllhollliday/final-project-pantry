@@ -8,12 +8,25 @@ import Recipe from "./routes/Recipe"
 import Profile from './routes/Profile'
 import Favourites from "./routes/Favourites"
 import MyPantry from "./routes/MyPantry"
-
+import SearchMenu from "./components/searchMenu/SearchMenu"
 import NavBar from "./components/NavBar"
 
 function App() {
+
+  /* const cuisine = [
+    { value: "vietnamese", label: "Vietnamese"},
+    { value: "american", label: "American"},
+    { value: "chinese", label: "Chinese"},
+    { value: "french", label: "French"},
+    { value: "italian", label: "Italian"},
+    { value: "mediterranean", label: "Mediterranean"},
+] */
+
   return ( <div>
     <NavBar/>
+
+    <SearchMenu />
+
     <Routes>
       <Route path="/" element={<Home />} />{" "}
       <Route path="/login" element={<Login />} />
