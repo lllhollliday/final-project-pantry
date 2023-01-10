@@ -5,7 +5,6 @@ import Dropdown from './Dropdown';
 
 /* import Dropdown from './dropdown' */
 
-
 const SearchMenu = () => {
 
     const [ click, setClick ] = useState(false);
@@ -30,33 +29,45 @@ const SearchMenu = () => {
                 {/* <button type="submit">Search</button> */}
 
             </form>
-
             
-        
-        <div  className="nav-item">
-            <Link
-                
-                className='dropdown-menu'
-                onClick
-            >
-                cuisine <i className='fas fa-caret-down'/>
-            </Link>
+            <div className='dropdown-container'>
 
-            {dropdown && <Dropdown/>}
-        </div>
+                <div  className="nav-item">
+                    <Link
+                        
+                        className='dropdown-menu'
+                        onClick
+                    >
+                        cuisine <i className='fas fa-caret-down'/>
+                    </Link>
 
-        {/* <div  className="nav-item">
-            <Link
-                to='/mealtype'
-                className='dropdown-menu'
-                onClick
-            >
-                meal type <i className='fas fa-caret-down'/>
-            </Link>
+                    {dropdown && <Dropdown/>}
+                </div>
+            
+                <div  className="nav-item">
+                    <Link
+                        
+                        className='dropdown-menu'
+                        onClick
+                    >
+                        mealtype <i className='fas fa-caret-down'/>
+                    </Link>
 
-            {dropdown && <Dropdown/>}
-        </div> */}
+                    {dropdown && <Dropdown/>}
+                </div>
+            
+                <div  className="nav-item">
+                    <Link
+                        
+                        className='dropdown-menu'
+                        onClick
+                    >
+                        diet <i className='fas fa-caret-down'/>
+                    </Link>
 
+                    {dropdown && <Dropdown/>}
+                </div>
+            </div>
 
         </div>
 )

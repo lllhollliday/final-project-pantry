@@ -19,8 +19,12 @@
     padding: 1rem;
 }
 
-.singleDropdown {
-    padding: 1rem;
+.dropdown-container {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
 }
 
 /* ------------------- */
