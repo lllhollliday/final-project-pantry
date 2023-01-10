@@ -1,0 +1,26 @@
+{
+  "dependencies": {
+    "bootstrap": "^5.2.3",
+    "install": "^0.13.0",
+    "react-bootstrap": "^2.7.0"
+  },
+  "name": "final-project-pantry",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lllhollliday/final-project-pantry.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lllhollliday/final-project-pantry/issues"
+  },
+  "homepage": "https://github.com/lllhollliday/final-project-pantry#readme",
+  "keywords": []
+}

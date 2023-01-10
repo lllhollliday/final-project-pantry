@@ -11,9 +11,16 @@ import MyPantry from "./routes/MyPantry"
 
 import NavBar from "./components/NavBar"
 
+import Container from "react-bootstrap/Container";
+import CarouselLanding from "./components/CarouselLanding";
+// import 'bootstrap/dist/css/bootstrap.min.css';
+
 function App() {
   return ( <div>
     <NavBar/>
+    <Container>
+      <CarouselLanding />
+    </Container>
     <Routes>
       <Route path="/" element={<Home />} />{" "}
       <Route path="/login" element={<Login />} />
