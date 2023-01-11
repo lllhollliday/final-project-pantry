@@ -1,26 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { globalContext } from "./globalContext";
 
-export default function globalContainer(props) {
+export default function GlobalContainer(props) {
 
+    const [ recipes, setRecipes ] = useState(null)
 
+    useEffect( () => {
+        fetch("https://jsonplaceholder.typicode.com/posts")
+        .then(res => res.json())
+        .then(result => {
+            console.log(result)
+            setRecipes(result.data)
+    })
+    }, [])
 
-    const cuisine = [
-        { value: "vietnamese", label: "Vietnamese"},
-        { value: "american", label: "American"},
-        { value: "chinese", label: "Chinese"},
-        { value: "french", label: "French"},
-        { value: "italian", label: "Italian"},
-        { value: "mediterranean", label: "Mediterranean"},
-    ]
+    return(
+        <globalContext.Provider value={{recipes, setRecipes}}>
 
-    return (
-        <globalContext.Provider 
-        value = {
-            {cuisine}
-        }
-        >
             {props.children}
+            
         </globalContext.Provider>
+
     )
+
+    
 }
