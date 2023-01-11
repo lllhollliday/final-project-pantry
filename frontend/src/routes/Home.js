@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import SearchMenu from '../components/searchMenu/SearchMenu'
-import { globalContext } from '../components/context/globalContext'
+import { globalContext } from '../context/globalContext.js'
 
 export default function Home() {
 
