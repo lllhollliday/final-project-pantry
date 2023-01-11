@@ -25,7 +25,7 @@ function App() {
   return ( <div>
     <NavBar/>
 
-    <SearchMenu />
+    
 
     <Routes>
       <Route path="/" element={<Home />} />{" "}
