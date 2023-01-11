@@ -1,0 +1,31 @@
+/* .dropdown-container {
+    text-align: left;
+    border: 1px solid #ccc;
+    position: relative;
+    border-radius: 5px;
+  }
+  .dropdown-input {
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+  } */
+
+  .dropdown-menu {
+    position: absolute;
+    transform: translate(4px);
+    width: 200px;
+    list-style: none;
+    text-align: start;
+
+  }
+
+  .dropdown-item {
+    padding: 5px;
+    cursor: pointer;
+  }
+
+  .dropdown-item:hover {
+    background-color: #bebebe;
+  }
