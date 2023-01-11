@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { dropdownContext } from "./dropdownContext";
+import { globalContext } from "./globalContext";
 
-export default function DropdownContainer(props) {
+export default function globalContainer(props) {
+
+
 
     const cuisine = [
         { value: "vietnamese", label: "Vietnamese"},
@@ -10,16 +12,15 @@ export default function DropdownContainer(props) {
         { value: "french", label: "French"},
         { value: "italian", label: "Italian"},
         { value: "mediterranean", label: "Mediterranean"},
-
     ]
 
     return (
-        <dropdownContext.Provider 
+        <globalContext.Provider 
         value = {
             {cuisine}
         }
         >
             {props.children}
-        </dropdownContext.Provider>
+        </globalContext.Provider>
     )
 }
