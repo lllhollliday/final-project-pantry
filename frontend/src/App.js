@@ -12,9 +12,13 @@ import MyPantry from "./routes/MyPantry"
 import NavBar from "./components/NavBar"
 
 function App() {
+
+
   return ( <div>
     <NavBar/>
  
+
+
     <Routes>
       <Route path="/" element={<Home />} />{" "}
       <Route path="/login" element={<Login />} />
