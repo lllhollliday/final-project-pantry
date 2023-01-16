@@ -1,36 +1,41 @@
 import { useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
 import styled from "styled-components"
 
 function Recipe() {
-  const [recipes, setRecipe] = useState([])
+  let params = useParams()
 
-  // run the search as soon as the page loads (gets mounted)
-  useEffect(() => {
-    getRecipe()
-  }, [])
+  const [recipe, setRecipe] = useState()
 
   const getRecipe = async () => {
-    const api = await fetch(`https://dummyjson.com/products/`)
+    const data = await fetch(`https://dummyjson.com/products/${params.name}`)
 
-    const data = await api.json()
-
-    setRecipe(data.products)
-
-    console.log(data)
+    const recipeData = await data.json()
+    setRecipe(recipeData)
   }
+
+  useEffect(() => {
+    try {
+      getRecipe()
+    } catch (error) {
+      console.log(error)
+    }
+  }, [recipe])
+
   return (
     <FlexWrapper>
-      {recipes.map((recipe) => {
-        return (
-          <div className="recipe card">
-            <h2>Recipe</h2>
-          </div>
-        )
-      })}
+      {recipe ? (
+        <div>
+          <h1>{recipe.title}</h1>
+          <img src={recipe.images[0]} alt={recipe.title} />
+          <div>{recipe.description}</div>
+        </div>
+      ) : (
+        "Loading..."
+      )}
     </FlexWrapper>
   )
 }
-
 const FlexWrapper = styled.div`
   display: flex;
   justify-content: center;

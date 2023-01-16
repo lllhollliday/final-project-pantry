@@ -18,10 +18,12 @@
   padding: 3px 35px 3px 35px;
   margin: 6px;
 
-  font-size: 20px;
+  font-size: 18px;
   border-radius: 10px;
 
   background-color: #fff3d6;
+-webkit-box-shadow: -1px 4px 18px -10px #BABABA; 
+box-shadow: -1px 4px 18px -10px #BABABA;
 }
 
 .button {
@@ -37,7 +39,7 @@
   transition: ease-out 0.4s;
 }
 .landingButton:hover {
-  background-color: #65a46fe4;
+  background-color: #65a46f;
   transition: ease-in 0.2s;
 }
 
