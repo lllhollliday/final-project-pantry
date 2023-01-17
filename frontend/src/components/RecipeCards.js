@@ -1,41 +1,27 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import styled from "styled-components"
+import { globalContext } from "../context/globalContext"
 
 // home page to render the top random recipes as the first cards
 
 export default function RecipeCards() {
-  const [random, setRandom] = useState([])
-
-  // run the search as soon as the page loads (gets mounted)
-  useEffect(() => {
-    getRandom()
-  }, [])
-
-  const getRandom = async () => {
-    const api = await fetch(`https://dummyjson.com/products/?limit=12`)
-
-    const data = await api.json()
-
-    setRandom(data.products)
-
-    console.log(data)
-  }
+  const { recipes } = useContext(globalContext)
 
   return (
     <FlexWrap>
       <Wrapper>
-        {random.map((recipe) => {
+        {recipes?.map((item) => {
           return (
-            <StyledLink to={"/recipe/" + recipe.id}>
+            <StyledLink to={"/recipe/" + item.recipe._id}>
               <div>
-                <CardImg key={recipe.id}>
-                  <img src={recipe.images[0]} alt={recipe.title} />
+                <CardImg key={item.recipe._id}>
+                  <img src={item.recipe.uri} alt={item.recipe.label} />
                 </CardImg>{" "}
                 <TitleTextWrapper>
                   <CardTitle>
-                    {recipe.title}
-                    <p>Preparation time: {recipe.time}</p>
+                    {item.recipe.label}
+                    <p>Preparation time: </p>
                   </CardTitle>
                 </TitleTextWrapper>
               </div>

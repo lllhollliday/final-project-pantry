@@ -8,8 +8,10 @@ import ContainerContext from './context/globalContainer.js'
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
 
+  <ContainerContext>
     <BrowserRouter>
       <App />
     </BrowserRouter>
+    </ContainerContext>
 
 )

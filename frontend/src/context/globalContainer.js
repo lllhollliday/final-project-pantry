@@ -6,12 +6,12 @@ export default function GlobalContainer(props) {
     const [ recipes, setRecipes ] = useState(null)
 
     useEffect( () => {
-        fetch("https://jsonplaceholder.typicode.com/posts")
+        fetch(`http://localhost:8000/recipes?recipe=chicken`)
         .then(res => res.json())
         .then(result => {
-            console.log(result)
-            setRecipes(result.data)
-    })
+            console.log(result.recipes[0])
+            setRecipes(result.recipes)
+        })
     }, [])
 
     return(
