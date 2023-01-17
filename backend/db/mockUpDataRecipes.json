@@ -1,0 +1,16 @@
+[
+    {
+        "name": "Cake",
+        "ingredients" : ["milk","sugar"],
+        "categories" : ["cake"],
+        "recipeLength": 2,
+        "isVegetarian": true
+    },
+    {
+        "name": "Bred",
+        "ingredients" : ["milk","flower"],
+        "categories" : ["bred"],
+        "recipeLength": 2,
+        "isVegetarian": true
+    }
+]

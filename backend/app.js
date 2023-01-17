@@ -2,6 +2,7 @@ import express from "express";
 import morgan from "morgan";
 import dotenv from "dotenv";
 import axios from "axios";
+import cors from "cors"
 import recipesRoute from './routes/recipesroute.js'
 dotenv.config()
 
@@ -13,6 +14,8 @@ import errorHandlerMiddleware from "./middleware/errorHandler.js"
 import notFoundMiddleware from "./middleware/notFound.js"
 
 const app = express()
+
+app.use(cors({origin:"http://localhost:3000"}))
 
 app.get('/', )
 
