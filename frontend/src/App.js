@@ -8,16 +8,13 @@ import Recipe from "./routes/Recipe"
 import Profile from './routes/Profile'
 import Favourites from "./routes/Favourites"
 import MyPantry from "./routes/MyPantry"
-
+import SearchMenu from "./components/searchMenu/SearchMenu"
 import NavBar from "./components/NavBar"
 
 function App() {
 
-
   return ( <div>
     <NavBar/>
- 
-
 
     <Routes>
       <Route path="/" element={<Home />} />{" "}
@@ -28,10 +25,8 @@ function App() {
       <Route path="/profile" element={<Profile />} />
       <Route path="/favourites" element={<Favourites />} />
       <Route path="/mypantry" element={<MyPantry/>} />
-
     </Routes>
     </div>
   )
 }
-
 export default App
