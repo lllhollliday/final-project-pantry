@@ -1,0 +1,23 @@
+{
+    "recipeTitle": "string",
+    "ingredientCount": "number",
+    "image": "string",
+    "ingredients": {
+            "name": "string",
+            "quantity": "number",
+            "quantityUnit": "string",
+            "aisle": "string"
+    }, 
+    
+    "cuisineType": "string",
+    "mealType": "string",
+    "dishType": "string",
+    "healthType": "string",
+    "instructions": {
+            "stepNumber": "number",
+            "stepDescription": "string",
+            "prepTime": "string"
+        }
+        
+}
+
