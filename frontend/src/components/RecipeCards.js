@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 import styled from "styled-components"
 
 // home page to render the top random recipes as the first cards
 
-function RecipeCards() {
+export default function RecipeCards() {
   const [random, setRandom] = useState([])
 
   // run the search as soon as the page loads (gets mounted)
@@ -26,17 +27,19 @@ function RecipeCards() {
       <Wrapper>
         {random.map((recipe) => {
           return (
-            <div>
-              <CardImg key={recipe.id}>
-                <img src={recipe.images[0]} alt={recipe.title} />
-              </CardImg>{" "}
-              <TitleTextWrapper>
-                <CardTitle>
-                  {recipe.title}
-                  <p>Preparation time: {recipe.time}</p>
-                </CardTitle>
-              </TitleTextWrapper>
-            </div>
+            <StyledLink to={"/recipe/" + recipe.id}>
+              <div>
+                <CardImg key={recipe.id}>
+                  <img src={recipe.images[0]} alt={recipe.title} />
+                </CardImg>{" "}
+                <TitleTextWrapper>
+                  <CardTitle>
+                    {recipe.title}
+                    <p>Preparation time: {recipe.time}</p>
+                  </CardTitle>
+                </TitleTextWrapper>
+              </div>
+            </StyledLink>
           )
         })}
       </Wrapper>
@@ -45,7 +48,7 @@ function RecipeCards() {
 }
 
 const FlexWrap = styled.div`
-  margin-top: 30rem;
+  margin-top: 10rem;
   display: flex;
   justify-content: center;
 `
@@ -65,7 +68,9 @@ const CardImg = styled.div`
   min-height: 17rem;
   max-height: 17rem;
   border-radius: 2rem;
-  border: 1px solid black;
+  //border: 1px solid #ffb8038e;
+  -webkit-box-shadow: -7px 3px 31px -15px rgba(133, 133, 133, 0.81);
+  box-shadow: -7px 3px 31px -15px rgba(133, 133, 133, 0.81);
   overflow: hidden;
 
   img {
@@ -81,9 +86,16 @@ const TitleTextWrapper = styled.div`
 
 const CardTitle = styled.div`
   font-size: 20px;
+  color: black;
 
   p {
     font-size: 15px;
   }
 `
-export default RecipeCards
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  &:hover {
+    font-weight: 380;
+  }
+`
