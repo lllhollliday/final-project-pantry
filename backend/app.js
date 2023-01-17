@@ -1,38 +1,42 @@
-import express from "express"
-import morgan from "morgan"
-import dotenv from "dotenv"
+import express from "express";
+import morgan from "morgan";
+import dotenv from "dotenv";
+import axios from "axios";
+import recipesRoute from './routes/recipesroute.js'
 dotenv.config()
 
 // Connecting to database / authenticate user
 import connectDB from "./db/connect.js"
-
+connectDB(`mongodb+srv://finalproject:Dci1234!@final-project-pantry.guvtnoz.mongodb.net/?retryWrites=true&w=majority`)
 // Middleware error handling
 import errorHandlerMiddleware from "./middleware/errorHandler.js"
 import notFoundMiddleware from "./middleware/notFound.js"
 
 const app = express()
 
+app.get('/', )
+
 app.use(express.json())
 
-app.get("/", (req, res) => {
-  throw new Error("error")
-  res.send("Hello")
-})
+// app.get("/", (req, res) => {
+//   throw new Error("error")
+//   res.send("Hello")
+// })
 
-app.use(notFoundMiddleware)
-app.use(errorHandlerMiddleware)
+// app.use(notFoundMiddleware)
+// app.use(errorHandlerMiddleware)
 
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 8000
 
 app.use(morgan("dev"))
 
 // Routes
-/* app.use("/recipes", recipesRoute)
+app.use("/recipes", recipesRoute)
 
-app.use("/users", usersRoute) */
+// app.use("/users", usersRoute)
 
 // server will only start if connection to database is successful
-const start = async () => {
+/* const start = async () => {
   try {
     await connectDB(process.env.MONGO_URL)
     app.listen(PORT, () => console.log("server is running on port", PORT))
@@ -41,4 +45,6 @@ const start = async () => {
   }
 }
 
-start()
+start() */
+
+app.listen(PORT, () => console.log('server running on port:', PORT))
