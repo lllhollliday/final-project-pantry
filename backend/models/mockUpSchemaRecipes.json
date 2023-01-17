@@ -1,0 +1,10 @@
+{
+    "name": "String",
+    "ingredients" : "Array",
+    "categories" : "Array",
+    "recipeLength": "Number",
+    "isVegetarian": true
+}
+
+DO THIS WITH EDAMAM AND SPOONACULAR SCHEMA, HAVE A LOOK HOW THEY SOLVED THIS
+ADD YOUR OWN SCHEMA FEATURES/FILTER/FUNCTIONS i.e. Reference to User, recipeLength
