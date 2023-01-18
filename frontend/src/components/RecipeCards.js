@@ -16,7 +16,7 @@ export default function RecipeCards() {
             <StyledLink to={"/recipe/" + item.recipe._id}>
               <div>
                 <CardImg key={item.recipe._id}>
-                  <img src={item.recipe.uri} alt={item.recipe.label} />
+                  <img src={item.recipe.image} alt={item.recipe.label} />
                 </CardImg>{" "}
                 <TitleTextWrapper>
                   <CardTitle>
