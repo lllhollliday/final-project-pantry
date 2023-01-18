@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { cuisine } from "../../dropdownItems";
 import { Link } from "react-router-dom";
 //import { dropdownContext } from "../context/dropdownContext";
-import "./dropdown.css"
+import "./DropDown.module.css"
 
 
 const Dropdown = () => {

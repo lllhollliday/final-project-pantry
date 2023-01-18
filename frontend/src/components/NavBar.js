@@ -33,10 +33,6 @@ const Navbar = () => {
           <NavLink className={styles["button"]} to="/">
             Logout
           </NavLink>{" "}
-          {/* : */}{" "}
-          <NavLink className={styles["landingButton"]} to="/signup">
-            Sign Up
-          </NavLink>{" "}
           <NavLink className={styles["landingButton"]} to="/login">
             Login
           </NavLink>
