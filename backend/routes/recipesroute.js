@@ -24,15 +24,14 @@ router.get('/', async(req, res) => {
     const recipeQuery = req.query.recipe;
     console.log(recipeQuery)
     try{
-        const found= await recipeCollection.findOne({
+        const found = await recipeCollection.findOne({
             query: recipeQuery
         })
         if(found){
             res.json(found)
         } else {
             const {data} = await
-        axios.get(`https://api.edamam.com/search?q=${recipeQuery}&app_id=8d589cb8&app_key=
-        4c1d224144b3fa7000b2320750876ef8`);
+        axios.get(`https://api.edamam.com/api/recipes/v2?type=public&q=${recipeQuery}&app_id=8d589cb8&app_key=4c1d224144b3fa7000b2320750876ef8&imageSize=LARGE`);
         console.log(data);
         const recipe = new recipeCollection({query:recipeQuery, recipes: data.hits})
         await recipe.save()
@@ -46,3 +45,6 @@ router.get('/', async(req, res) => {
 });
 
 export default router;
+
+
+// http://localhost:8000/recipes?recipe=rice
