@@ -1,5 +1,5 @@
 import React, { useState} from 'react'
-import styles from "./searchMenu.css"
+import styles from "./SearchMenu.module.css"
 import { Link } from 'react-router-dom';
 import Dropdown from './Dropdown';
 

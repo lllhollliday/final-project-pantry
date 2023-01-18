@@ -39,8 +39,8 @@ box-shadow: -1px 4px 18px -10px #BABABA;
   transition: ease-out 0.4s;
 }
 .landingButton:hover {
-  background-color: #65a46f;
-  transition: ease-in 0.2s;
+  background-color: #65a46fd6;
+  transition: ease-in 0.15s;
 }
 
 img {
