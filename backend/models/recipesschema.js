@@ -1,7 +1,10 @@
 import mongoose from "mongoose";
 
 const recipeSchema = new mongoose.Schema({
-    query: String,
+    q: String,
+    cuisineType: String, 
+    health : String,
+    mealType: String,
     recipes: []
 })
 
