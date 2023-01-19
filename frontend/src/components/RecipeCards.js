@@ -21,7 +21,7 @@ export default function RecipeCards() {
                 <TitleTextWrapper>
                   <CardTitle>
                     {item.recipe.label}
-                    <p>Preparation time: </p>
+              {      <p>Preparation time: {item.recipe.totalTime} mins </p>}
                   </CardTitle>
                 </TitleTextWrapper>
               </div>
@@ -63,16 +63,19 @@ const CardImg = styled.div`
     object-fit: cover;
     width: 200%;
     height: 100%;
+
   }
 `
 const TitleTextWrapper = styled.div`
   text-align: center;
   margin-top: 10px;
+
 `
 
 const CardTitle = styled.div`
   font-size: 20px;
   color: black;
+
 
   p {
     font-size: 15px;

@@ -8,7 +8,7 @@ import Recipe from "./routes/Recipe"
 import Profile from './routes/Profile'
 import Favourites from "./routes/Favourites"
 import MyPantry from "./routes/MyPantry"
-import SearchMenu from "./components/searchMenu/SearchMenu"
+import SearchMenu from "./components/searchMenu/SearchMenu2"
 import NavBar from "./components/NavBar"
 
 function App() {

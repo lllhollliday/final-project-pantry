@@ -7,7 +7,7 @@
 /* fonts */
 @import url("https://fonts.googleapis.com/css2?family=Halant:wght@300;400;500&display=swap");
 
-:root {
+ :root {
   /* colors */
   --light-orange: #fff3d6;
   --bright-orange: #ffb803;
@@ -17,9 +17,9 @@
   --grey: #ede4e3;
   --form-color: #fb8600c0;
   --text-color: #3e6544eb;
-}
+} /* 
 .form {
-  width: 60vw;
+  width: 35rem;
   padding: 5rem 5.5rem;
   margin: 3rem auto;
   border: 1px solid var(--form-color);
@@ -51,3 +51,4 @@
 .form-textarea {
   height: 7rem;
 }
+ */

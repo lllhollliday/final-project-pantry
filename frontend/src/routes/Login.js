@@ -85,6 +85,43 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 5rem;
+
+
+
+.form {
+  width: 35rem;
+  padding: 5rem 5.5rem;
+  margin: 3rem auto;
+  border: 1px solid var(--form-color);
+  border-radius: 40px;
+  background-color: var(--form-color);
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  text-transform: capitalize;
+}
+.form-input,
+.form-textarea,
+.form-select {
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  border-radius: 10px;
+}
+.form-input,
+.form-select,
+.btn-block {
+  height: 35px;
+}
+.form-row {
+  margin-bottom: 1rem;
+}
+
+.form-textarea {
+  height: 7rem;
+}
+
 `
 
 const Headers = styled.div`
