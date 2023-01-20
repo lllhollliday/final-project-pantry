@@ -3,17 +3,18 @@ import { globalContext } from "../context/globalContext"
 import styled from "styled-components"
 
 function SearchMenu() {
-  const [cuisine, setCuisine] = useState(" ")
-  /* const [time, setTime] = useState(" ")
-  const [diet, setDiet] = useState(" ")
- */
+  const [cuisine, setCuisine] = useState("")
+  const [mealType, setMealType] = useState("")
+  const [health, setHealth] = useState("")
+
   const { recipes, setRecipes } = useContext(globalContext)
 
   const fetchRecipe = (e) => {
     e.preventDefault()
     console.log(cuisine)
+    console.log("hi some text", e.target.query.value);
     fetch(
-      `http://localhost:8000/recipes?q=${e.target.query.value}&cuisineType=${cuisine}&mealType=Breakfast&health=dairy-free`
+      `http://localhost:8000/recipes?q=${e.target.query.value}&cuisineType=${cuisine}&mealType=${mealType}&health=${health}`
     )
       .then((res) => res.json())
       .then((result) => {
@@ -42,24 +43,25 @@ function SearchMenu() {
               )
             })}
  */}
-            <option value=" ">all</option>
+            <option value="">all</option>
             <option value="italian">italian</option>
             <option value="french">french</option>
             <option value="chinese">chinese</option>
           </select>
+
+          <select name="mealType" onChange={(e) => setMealType(e.target.value)}>
+            <option value="">All</option>
+            <option value="breakfast">breakfast</option>
+            <option value="lunch">lunch</option>
+            <option value="dinner">dinner</option>
+          </select>
+          <select name="health" onChange={(e) => setHealth(e.target.value)}>
+            <option value="">All</option>
+            <option value="alcohol-free">alc free</option>
+            <option value="dairy-free">Dairy-free</option>
+            <option value="pork-free">Pork-free</option>{" "}
+          </select>
           <button>search</button>
-          {/*  <select>
-          <option value="">All</option>
-          <option value="30">30 minutes or less</option>
-          <option value="60">1 hour or less</option>
-          <option value="120">2 hours or less</option>
-        </select>
-        <select >
-          <option value="">All</option>
-          <option value="vegetarian">Vegetarian</option>
-          <option value="vegan">Vegan</option>
-          <option value="gluten-free">Gluten-Free</option>{" "}
-        </select> */}
         </div>
       </form>
     </Wrapper>

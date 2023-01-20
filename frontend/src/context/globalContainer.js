@@ -6,7 +6,9 @@ export default function GlobalContainer(props) {
     const [ recipes, setRecipes ] = useState(null)
 
     useEffect( () => {
-        fetch(`http://localhost:8000/recipes?q=chicken&cuisineType=italian&health=dairy-free&mealType=Breakfast`)
+        fetch(`http://localhost:8000/recipes?random=true`)
+   /*      `http://localhost:8000/recipes?q=chicken&cuisineType=italian&health=dairy-free&mealType=Breakfast`
+ */
         .then(res => res.json())
         .then(result => {
             console.log(result.recipes[0])
@@ -25,3 +27,5 @@ export default function GlobalContainer(props) {
 
 
 }
+
+/* ?q=chicken&cuisineType=italian&health=dairy-free&mealType=Breakfast */
