@@ -34,7 +34,7 @@ export default function RecipeCards() {
 }
 
 const FlexWrap = styled.div`
-  margin-top: 10rem;
+  //margin-top: 10rem;
   display: flex;
   justify-content: center;
 `
