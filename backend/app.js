@@ -6,12 +6,15 @@ import cors from "cors"
 import recipesRoute from './routes/recipesroute.js'
 dotenv.config()
 
+import stream from "stream";
+
 // Connecting to database / authenticate user
 import connectDB from "./db/connect.js"
 connectDB(`mongodb+srv://finalproject:Dci1234!@final-project-pantry.guvtnoz.mongodb.net/?retryWrites=true&w=majority`)
 // Middleware error handling
 import errorHandlerMiddleware from "./middleware/errorHandler.js"
 import notFoundMiddleware from "./middleware/notFound.js"
+import imagesCollection from "./models/imagesschema.js";
 
 const app = express()
 
@@ -33,6 +36,16 @@ const PORT = process.env.PORT || 8000
 
 app.use(morgan("dev"))
 
+app.get("/images/:fileName", async(req, res, next)=>{
+  const{fileName} = req.params
+  const image = await imagesCollection.findOne({fileName})
+  if (image){
+    let readStream = stream.Readable.from(image.data)
+    readStream.pipe(res)
+  } else {
+    return res.json("Image not found")
+  }
+})
 // Routes
 app.use("/recipes", recipesRoute)
 
