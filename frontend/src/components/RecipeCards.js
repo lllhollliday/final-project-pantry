@@ -13,15 +13,15 @@ export default function RecipeCards() {
       <Wrapper>
         {recipes?.map((item) => {
           return (
-            <StyledLink to={"/recipe/" + item.recipe._id}>
+            <StyledLink to={"/recipe/" + item._id}>
               <div>
-                <CardImg key={item.recipe._id}>
-                  <img src={item.recipe.image} alt={item.recipe.label} />
+                <CardImg key={item._id}>
+                  <img src={item.image} alt={item.label} />
                 </CardImg>{" "}
                 <TitleTextWrapper>
                   <CardTitle>
-                    {item.recipe.label}
-              {      <p>Preparation time: {item.recipe.totalTime} mins </p>}
+                    {item.label}
+              {      <p>Preparation time: {item.totalTime} mins </p>}
                   </CardTitle>
                 </TitleTextWrapper>
               </div>
