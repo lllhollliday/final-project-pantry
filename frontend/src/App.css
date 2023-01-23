@@ -11,12 +11,15 @@
   /* colors */
   --light-orange: #fff3d6;
   --bright-orange: #ffb803;
-  --solid-green: #65a46f;
-  --transl-green: #65a46fd6;
+  --solid-green: #65a46f; --solid-green: #65a46f5a;
+  --transl-green: #65a46f14;
   --dark-blue: #011a28;
   --grey: #ede4e3;
   --form-color: #fb8600c0;
+  --form-color: #ec5f18;
+  --form-color: #fb8600a0;
   --text-color: #3e6544eb;
+  --text-color2: #3e65446a;
 } /* 
 .form {
   width: 35rem;
