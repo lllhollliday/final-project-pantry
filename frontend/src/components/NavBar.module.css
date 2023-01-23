@@ -1,7 +1,7 @@
 .navbar {
   display: flex;
   justify-content: space-between;
-  height: 104px;
+  height: 80px;
   border: 1px solid #fff3d6;
   padding: 10px;
   align-items: center;
@@ -21,9 +21,9 @@
   font-size: 18px;
   border-radius: 10px;
 
-  background-color: #fff3d6;
--webkit-box-shadow: -1px 4px 18px -10px #BABABA; 
-box-shadow: -1px 4px 18px -10px #BABABA;
+/*   background-color: #fff3d6;
+ */  -webkit-box-shadow: -1px 4px 18px -10px #bababa;
+  box-shadow: -1px 4px 18px -10px #bababa;
 }
 
 .button {

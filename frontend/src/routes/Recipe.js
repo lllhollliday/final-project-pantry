@@ -1,10 +1,23 @@
+/* import { useContext } from "react"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import styled from "styled-components"
 
+import { globalContext } from "../context/globalContext"
+
 function Recipe() {
+  const [recipe, setRecipe]
+
+  const { recipes } = useContext(globalContext)
   let params = useParams()
 
+  const getRecipe = async () => {
+    const data = await fetch(`http://localhost:8000/recipes?${params._id}`)
+
+    const recipeData = await data.json()
+    setRecipe(recipeData)
+  }
+  /*
   const [recipe, setRecipe] = useState()
 
   const getRecipe = async () => {
@@ -20,19 +33,18 @@ function Recipe() {
     } catch (error) {
       console.log(error)
     }
-  }, [recipe])
+  }, [recipe]) */
 
-  return (
+ /*  return (
     <FlexWrapper>
-      {recipe ? (
-        <div>
-          <h1>{recipe.title}</h1>
-          <img src={recipe.images[0]} alt={recipe.title} />
-          <div>{recipe.description}</div>
-        </div>
-      ) : (
-        "Loading..."
-      )}
+      {recipes?.map((item) => {
+        return (
+          <div>
+            <h1>{item.title}</h1>
+            <img src={item.image} alt={item.title} />
+          </div>
+        )
+      })}
     </FlexWrapper>
   )
 }
@@ -41,3 +53,4 @@ const FlexWrapper = styled.div`
   justify-content: center;
 `
 export default Recipe
+  */
