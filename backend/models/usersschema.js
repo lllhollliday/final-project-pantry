@@ -1,6 +1,6 @@
-import mongoose from "mongoose"
+import mongoose from "mongoose";
 
-const UserSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, "Please provide name"],
@@ -28,7 +28,7 @@ const UserSchema = new mongoose.Schema({
 })
 
 // export default mongoose.model('User', UserSchema)
-const usersCollection = mongoose.model("users", UserSchema);
+const usersCollection = mongoose.model("users", userSchema);
 
 // create index
 usersCollection.createIndexes({email: -1})
