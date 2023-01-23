@@ -1,6 +1,8 @@
+import usersCollection from "../models/usersschema.js";
+
 export const getAllUsers = async (req, res, next) => {
     res.send("users get req")
-}
+};
 
 export const getSingleUser = async (req, res, next) => {
     res.send("users/:id get req")

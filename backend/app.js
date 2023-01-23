@@ -6,9 +6,8 @@ import cors from "cors"
 import recipesRoute from './routes/recipesroute.js';
 import usersRoute from './routes/usersroute.js';
 import favouritesRoute from './routes/favouritesroute.js';
+import imagesRoute from './routes/imagesroute.js'
 dotenv.config()
-
-import stream from "stream";
 
 // Connecting to database / authenticate user
 import connectDB from "./db/connect.js"
@@ -16,7 +15,6 @@ connectDB(`mongodb+srv://finalproject:Dci1234!@final-project-pantry.guvtnoz.mong
 // Middleware error handling
 import errorHandlerMiddleware from "./middleware/errorHandler.js"
 import notFoundMiddleware from "./middleware/notFound.js"
-import imagesCollection from "./models/imagesschema.js";
 
 const app = express()
 
@@ -38,20 +36,22 @@ const PORT = process.env.PORT || 8000
 
 app.use(morgan("dev"))
 
-app.get("/images/:fileName", async(req, res, next)=>{
-  const{fileName} = req.params
-  const image = await imagesCollection.findOne({fileName})
-  if (image){
-    let readStream = stream.Readable.from(image.data)
-    readStream.pipe(res)
-  } else {
-    return res.json("Image not found")
-  }
-})
+// app.get("/images/:fileName", async(req, res, next)=>{
+//   const{fileName} = req.params
+//   const image = await imagesCollection.findOne({fileName})
+//   if (image){
+//     let readStream = stream.Readable.from(image.data)
+//     readStream.pipe(res)
+//   } else {
+//     return res.json("Image not found")
+//   }
+// })
 // Routes
 app.use("/recipes", recipesRoute);
 app.use("/users", usersRoute);
 app.use("/favourites", favouritesRoute)
+app.use("/images", imagesRoute)
+
 
 // server will only start if connection to database is successful
 /* const start = async () => {

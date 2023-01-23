@@ -1,3 +1,5 @@
+import favouritesCollection from "../models/favouritesschema.js";
+
 export const getAllFavouriteRecipes = async (req, res, next) => {
     res.send("favourites get req")
 };
