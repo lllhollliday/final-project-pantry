@@ -3,7 +3,9 @@ import morgan from "morgan";
 import dotenv from "dotenv";
 import axios from "axios";
 import cors from "cors"
-import recipesRoute from './routes/recipesroute.js'
+import recipesRoute from './routes/recipesroute.js';
+import usersRoute from './routes/usersroute.js';
+import favouritesRoute from './routes/favouritesroute.js';
 dotenv.config()
 
 import stream from "stream";
@@ -47,9 +49,9 @@ app.get("/images/:fileName", async(req, res, next)=>{
   }
 })
 // Routes
-app.use("/recipes", recipesRoute)
-
-// app.use("/users", usersRoute)
+app.use("/recipes", recipesRoute);
+app.use("/users", usersRoute);
+app.use("/favourites", favouritesRoute)
 
 // server will only start if connection to database is successful
 /* const start = async () => {

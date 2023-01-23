@@ -36,12 +36,8 @@ router.get("/", async (req, res) => {
 
       const { data } = await axios.get(
         `https://api.edamam.com/api/recipes/v2?type=public${
-          q ? "&q=" + q : ""
-        }${cuisineType ? "&cuisineType=" + cuisineType : ""}${
-          mealType ? "&mealType=" + mealType : ""
-        }${
-          health ? "&health=" + health : ""
-        }&app_id=8d589cb8&app_key=4c1d224144b3fa7000b2320750876ef8&imageSize=LARGE`
+          q ? "&q=" + q : ""}${cuisineType ? "&cuisineType=" + cuisineType : ""}${
+          mealType ? "&mealType=" + mealType : ""}${health ? "&health=" + health : ""}&app_id=8d589cb8&app_key=4c1d224144b3fa7000b2320750876ef8&imageSize=LARGE`
       )
       /*  console.log("this is res from data:", data) */
       let allImagePromises = data.hits.map((item) => {
