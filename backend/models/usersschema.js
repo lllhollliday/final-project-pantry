@@ -25,11 +25,12 @@ const UserSchema = new mongoose.Schema({
     minlength: 6,
     trim: true,
   },
-  /* location: {
-    type: String,
-    trim: true,
-    maxlength: 20
-  } */
 })
 
-export default mongoose.model('User', UserSchema)
+// export default mongoose.model('User', UserSchema)
+const usersCollection = mongoose.model("users", UserSchema);
+
+// create index
+usersCollection.createIndexes({email: -1})
+
+export default usersCollection;
