@@ -24,7 +24,7 @@ route.delete("/:id", verifyToken, deleteUser)
 export default route */
 
 import express from "express";
-import { createUser, deleteUser, getAllUsers, getSingleUser, loginUser, updateUser } from "../controllers/userscontrollers";
+import { createUser, deleteUser, getAllUsers, getSingleUser, loginUser, updateUser } from "../controllers/userscontrollers.js";
 
 const router = express.Router();
 

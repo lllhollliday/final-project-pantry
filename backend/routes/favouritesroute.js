@@ -1,5 +1,5 @@
 import express from "express";
-import { addFavouriteRecipe, deleteFavouriteRecipe, getAllFavouriteRecipes, getSingleFavouriteRecipe, updateFavouriteRecipe } from "../controllers/favouritescontroller";
+import { addFavouriteRecipe, deleteFavouriteRecipe, getAllFavouriteRecipes, getSingleFavouriteRecipe, updateFavouriteRecipe } from "../controllers/favouritescontroller.js";
 
 const router = express.Router();
 
