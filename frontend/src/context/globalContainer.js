@@ -4,6 +4,7 @@ import { globalContext } from "./globalContext";
 export default function GlobalContainer(props) {
 
     const [ recipes, setRecipes ] = useState(null)
+    const [ user, setUser ] = useState(null)
 
     useEffect( () => {
         fetch(`http://localhost:8000/recipes?random=true`)
@@ -17,7 +18,7 @@ export default function GlobalContainer(props) {
     }, [])
 
     return(
-        <globalContext.Provider value={{recipes, setRecipes}}>
+        <globalContext.Provider value={{recipes, setRecipes, user, setUser}}>
 
             {props.children}
 

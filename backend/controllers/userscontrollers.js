@@ -34,7 +34,7 @@ export const createUser = async (req, res, next) => {
     // catch(err){
     //     next(err)
     // }
-
+    console.log(req.body)
     bcrypt.hash(req.body.password, 10, function(err, hashedPass){
         if(err) {
             res.json({
@@ -50,12 +50,12 @@ export const createUser = async (req, res, next) => {
         // console.log(user.name);
         .then(user => {
             res.json({
-                message: 'User Added Successfully'
+                success:true, user
             })
         })
         .catch(error => {
             res.json({
-                message: 'An error occured'
+                success: false, message: 'An error occured'
             })
         })
     })
@@ -63,11 +63,11 @@ export const createUser = async (req, res, next) => {
 
 
 export const loginUser = async (req, res, next) => {
-    let username = req.body.username;
+    let email = req.body.email;
     let password = req.body.password
 
    try{
-    const user = await usersCollection.findOne({email: username})
+    const user = await usersCollection.findOne({email: email})
     .then(user => {
         if(user) {
             bcrypt.compare(password, user.password, function(err, result){
@@ -79,12 +79,13 @@ export const loginUser = async (req, res, next) => {
                 if(result){
                     let token = jwt.sign({_id:user._id,
                     name: user.name}, 'secretKey', {expiresIn:'1d'})
-                    res.json({
-                        message: 'Login Successful',
-                        token: token
+                    res.header({token}).json({
+                        success: true,
+                        user
                     })
                 }else{
                     res.json({
+                        success: false, 
                         message: 'Password does not match'
                     })
                 }
@@ -95,7 +96,6 @@ export const loginUser = async (req, res, next) => {
             })
         }
     })
-
    } 
    catch(err){
     next(err)

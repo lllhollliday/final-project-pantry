@@ -20,7 +20,7 @@ const app = express()
 
 app.use(cors({origin:"http://localhost:3000"}))
 
-app.get('/', )
+// app.get('/', )
 
 app.use(express.json())
 
@@ -46,6 +46,7 @@ app.use(morgan("dev"))
 //     return res.json("Image not found")
 //   }
 // })
+
 // Routes
 app.use("/recipes", recipesRoute);
 app.use("/users", usersRoute);
@@ -57,19 +58,7 @@ app.use((req, res, next) => {
 })
   // universal error handler
 app.use((err, req, res, next) => {
-  res.json({success: false, message: err.message})
+  res.json({success: false, message: err})
 })
-
-// server will only start if connection to database is successful
-/* const start = async () => {
-  try {
-    await connectDB(process.env.MONGO_URL)
-    app.listen(PORT, () => console.log("server is running on port", PORT))
-  } catch (error) {
-    console.log(error)
-  }
-}
-
-start() */
 
 app.listen(PORT, () => console.log('server running on port:', PORT))
