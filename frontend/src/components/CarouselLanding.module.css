@@ -6,7 +6,7 @@
     height: auto;
     width: auto;
     margin: auto;
-    
+    /* object-fit: fill; */
 }
 
 h3, p {

@@ -9,7 +9,8 @@ import styles from './CarouselLanding.module.css';
 const CarouselLanding = () => {
   return (
     <>
-    <Carousel>
+    <Carousel className="carousel-dark">
+      
       <Carousel.Item>
 
         <Row>
@@ -18,7 +19,7 @@ const CarouselLanding = () => {
             <img
             className={styles["slider"]}
             src={image1}
-            alt="Second slide"
+            alt="Recipe of the day"
             />
           </Col>
 
@@ -40,7 +41,7 @@ const CarouselLanding = () => {
             <img
             className={styles["slider"]}
             src={image2}
-            alt="Second slide"
+            alt="Image of a chicken"
             />
           </Col>
 
