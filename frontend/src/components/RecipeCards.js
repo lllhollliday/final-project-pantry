@@ -12,8 +12,9 @@ export default function RecipeCards() {
     <FlexWrap>
       <Wrapper>
         {recipes?.map((item) => {
+ 
           return (
-            <StyledLink to={"/recipe/" + item._id}>
+            <StyledLink to={"/recipe/" + item.label} state={item}>
               <div>
                 <CardImg key={item._id}>
                   <img src={item.image} alt={item.label} />
