@@ -25,6 +25,7 @@ export const createUser = async (req, res, next) => {
             password: hashedPass
         })
         user.save()
+        // console.log(user.name);
         .then(user => {
             res.json({
                 message: 'User Added Successfully'
@@ -36,14 +37,50 @@ export const createUser = async (req, res, next) => {
             })
         })
     })
-
-    
 };
 
 
 export const loginUser = async (req, res, next) => {
-    res.send("users post req on /login")
+    // res.send("users post req on /login")
+    let username = req.body.username;
+    let password = req.body.password
+
+   try{
+    const user = await usersCollection.findOne({email: username})
+    .then(user => {
+        if(user) {
+            bcrypt.compare(password, user.password, function(err, result){
+                if(err) {
+                    res.json({
+                        error:err
+                    })
+                }
+                if(result){
+                    let token = jwt.sign({_id:user._id,
+                    name: user.name}, 'secretKey', {expiresIn:'1d'})
+                    res.json({
+                        message: 'Login Successful',
+                        token: token
+                    })
+                }else{
+                    res.json({
+                        message: 'Password does not match'
+                    })
+                }
+            })
+        }else{
+            res.json({
+                message: 'No User Found'
+            })
+        }
+    })
+
+   } 
+   catch(err){
+    next(err)
+   }
 };
+
 
 export const updateUser = async (req, res, next) => {
     res.send("users patch req on /:id")
