@@ -9,7 +9,7 @@ import styles from './CarouselLanding.module.css';
 const CarouselLanding = () => {
   return (
     <>
-    <Carousel className="carousel-dark">
+    <Carousel indicators={false} className="carousel-dark">
       
       <Carousel.Item>
 
