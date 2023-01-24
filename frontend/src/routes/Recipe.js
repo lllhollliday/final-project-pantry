@@ -1,56 +1,120 @@
-/* import { useContext } from "react"
-import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useLocation } from "react-router-dom"
 import styled from "styled-components"
 
-import { globalContext } from "../context/globalContext"
-
 function Recipe() {
-  const [recipe, setRecipe]
+  const { state } = useLocation()
 
-  const { recipes } = useContext(globalContext)
-  let params = useParams()
-
-  const getRecipe = async () => {
-    const data = await fetch(`http://localhost:8000/recipes?${params._id}`)
-
-    const recipeData = await data.json()
-    setRecipe(recipeData)
-  }
-  /*
-  const [recipe, setRecipe] = useState()
-
-  const getRecipe = async () => {
-    const data = await fetch(`https://dummyjson.com/products/${params.name}`)
-
-    const recipeData = await data.json()
-    setRecipe(recipeData)
-  }
-
-  useEffect(() => {
-    try {
-      getRecipe()
-    } catch (error) {
-      console.log(error)
-    }
-  }, [recipe]) */
-
- /*  return (
+  console.log(state)
+  return (
     <FlexWrapper>
-      {recipes?.map((item) => {
-        return (
-          <div>
-            <h1>{item.title}</h1>
-            <img src={item.image} alt={item.title} />
-          </div>
-        )
-      })}
+      {state && (
+        <div>
+          <HeadWrap>
+            {" "}
+            <img src={state.image} alt="" />
+            <div>
+              <h1>{state.label}</h1>
+              <p>
+                {state.totalTime > 0
+                  ? `Preparation time: ${state.totalTime} mins`
+                  : ""}
+              </p>
+              {/* <p>Diet: *need to fix* {state.health}</p>{" "} */}
+            </div>
+          </HeadWrap>
+          <Line />
+          {/*   <IngWrap> */}
+          <h2>Ingredients </h2>
+          <InlineWrap>
+            <Quantity>
+              {state.ingredients.map((ing) => {
+                return (
+                  <ul>
+                    <li>
+                      {ing.quantity}{" "}
+                      {/*    = "<unit>" ? "" : `${ing.quantity}`  */}
+                      {ing.measure}
+                    </li>
+                  </ul>
+                )
+              })}
+            </Quantity>
+            <Ing>
+              {state.ingredients.map((ing) => {
+                return (
+                  <ul>
+                    <li>{ing.food}</li>
+                  </ul>
+                )
+              })}
+            </Ing>
+          </InlineWrap>
+          {/*      </IngWrap> */}
+        </div>
+      )}
     </FlexWrapper>
   )
 }
+
+export default Recipe
+
 const FlexWrapper = styled.div`
+  margin-top: 4rem;
   display: flex;
   justify-content: center;
+  h2 {
+    font-weight: 500;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+  }
 `
-export default Recipe
-  */
+
+const HeadWrap = styled.div`
+  display: inline-flex;
+  img {
+    width: 23rem;
+    height: auto;
+    border-radius: 15px;
+  }
+  h1,
+  p {
+    width: 17rem;
+    margin-left: 2rem;
+    font-weight: 500;
+  }
+`
+
+const Line = styled.div`
+  border-bottom: 1px solid grey;
+  width: 30rem;
+  margin-left: 5.5rem;
+  margin-top: 2rem;
+`
+
+/* const IngWrap = styled.div`
+  h2 {
+    font-weight: 300;
+  }
+
+  li {
+    display: inline-flex;
+  }
+  p:nth-child(2) {
+    margin-left: 6rem;
+  }
+`
+ */
+const InlineWrap = styled.div`
+  display: inline-flex;
+
+  li {
+    list-style-type: none;
+  }
+`
+
+const Quantity = styled.div`
+  font-weight: 500;
+`
+const Ing = styled.div`
+  margin-left: 6rem;
+`
