@@ -32,7 +32,7 @@ const router = express.Router();
 router.get('/', getAllUsers);
 router.get('/:id', getSingleUser);
 // Router Post "/users"
-router.post('/', createUser)
+router.post('/register', createUser)
 router.post('/login', loginUser);
 // Router Patch "/users"
 router.patch('/:id', updateUser);
