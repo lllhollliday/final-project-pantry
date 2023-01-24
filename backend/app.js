@@ -51,7 +51,14 @@ app.use("/recipes", recipesRoute);
 app.use("/users", usersRoute);
 app.use("/favourites", favouritesRoute)
 app.use("/images", imagesRoute)
-
+  //error handling
+app.use((req, res, next) => {
+  res.sendFile("./views/pageNotFound.html", {root: "."})
+})
+  // universal error handler
+app.use((err, req, res, next) => {
+  res.json({success: false, message: err.message})
+})
 
 // server will only start if connection to database is successful
 /* const start = async () => {

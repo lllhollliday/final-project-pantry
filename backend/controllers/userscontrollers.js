@@ -3,16 +3,38 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
 export const getAllUsers = async (req, res, next) => {
-    res.send("users get req")
+    try{
+        const users = await usersCollection.find()
+        res.json(users)
+    }
+    catch(err){
+        next(err)
+    }
 };
 
 export const getSingleUser = async (req, res, next) => {
-    res.send("users/:id get req")
+    // "/users/:id"
+    try{
+        const id = req.params.id
+        const singleUser = await usersCollection.find(id)
+        res.json({success: true, users: singleUser})
+    }
+    catch(err){
+        next(err)
+    }
 };
 
 
 export const createUser = async (req, res, next) => {
-    // res.send("users post req")
+    // try{
+    //     const user = await usersCollection.find(req.body)
+    //     await user.save()
+    //     res.json({success: true, user})
+    // }
+    // catch(err){
+    //     next(err)
+    // }
+
     bcrypt.hash(req.body.password, 10, function(err, hashedPass){
         if(err) {
             res.json({
@@ -41,7 +63,6 @@ export const createUser = async (req, res, next) => {
 
 
 export const loginUser = async (req, res, next) => {
-    // res.send("users post req on /login")
     let username = req.body.username;
     let password = req.body.password
 
@@ -83,9 +104,28 @@ export const loginUser = async (req, res, next) => {
 
 
 export const updateUser = async (req, res, next) => {
-    res.send("users patch req on /:id")
+    try{
+        const id = req.params.id
+        const updatedUser = await usersCollection.find(id)
+        res.json({success: true, user: updatedUser})
+    }
+    catch(err){
+        next(err)
+    }
 };
 
 export const deleteUser = async (req, res, next) => {
-    res.send("users delete req")
+    try{
+        const id = req.params.id
+        const existingUser = await usersCollection.find(id)
+        if(existingUser){
+            const deletedUser = await usersCollection.deleteOne({_id: existingUser})
+            res.json({success: true, status: deleteUser})
+        }else{
+            throw new Error ("User ID does not exist")
+        }
+    }
+    catch(err){
+        next(err)
+    }
 };
