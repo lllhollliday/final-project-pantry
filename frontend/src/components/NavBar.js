@@ -40,7 +40,7 @@ const Navbar = () => {
           ) : (
             <>
               <NavLink className={styles["landingButton"]} to="/login">
-                Login
+                Sign Up
               </NavLink>
             </>
           )}

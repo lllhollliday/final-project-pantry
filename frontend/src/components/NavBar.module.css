@@ -2,8 +2,8 @@
   display: flex;
   justify-content: space-between;
   height: 80px;
-  border: 1px solid #fff3d6;
-  padding: 10px;
+  border-bottom: 1.2px solid #3e6544eb;
+  padding: 20px 12px 14px 12px;
   align-items: center;
 }
 
@@ -19,34 +19,34 @@
   color: black;
   text-decoration: none;
   padding: 4px 18px 4px 18px;
-  margin: 6px;
+  margin: 1px;
 
   font-size: 13px;
-  border-radius: 6px;
+/*   border-radius: 6px; */
 
   transition: ease-in-out 0.2s;
 
   /*   background-color: #fff3d6;
  */
-  -webkit-box-shadow: -1px 4px 18px -10px #bababa;
-  box-shadow: -1px 4px 18px -10px #bababa;
+/*   -webkit-box-shadow: -1px 4px 18px -10px #bababa;
+  box-shadow: -1px 4px 18px -10px #bababa; */
 }
-
+ 
 .button {
-  border-bottom: solid 1px #ffb8038e;
-  border-radius: 6px;
+transition: ease-in-out 0.2s;
+/*   border-radius: 6px; */
 }
 .button:hover {
-  background-color: #fff3d695;
+  border-bottom: solid 1px #ffb8038e;
   transition: ease-out 0.4s;
 }
 .landingButton {
   font-size: 15px;
   font-weight: 400;
-  padding: 6px 25px 6px 25px;
-  background-color: #65a46f;
+  padding: 6px 20px 6px 20px;
+  background-color: #446f4ad2;
   transition: ease-out 0.4s;
-  color: #fff3d6;
+  color: #fff;
   border-radius: 40px;
 }
 .landingButton:hover {
