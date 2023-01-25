@@ -85,6 +85,7 @@ function SearchMenu() {
 export default SearchMenu
 
 const Wrapper = styled.div`
+
   margin-top: 5rem;
   display: flex;
   justify-content: center;
@@ -92,12 +93,17 @@ const Wrapper = styled.div`
 `
 
 const SearchWrap = styled.div`
+
+
+
+
   display: flex;
   justify-content: center;
   justify-content: space-around;
   margin-bottom: 10px;
 
   input {
+    
     border-radius: 8px;
     width: 38rem;
     padding: 4px 0px 4px 8px;
@@ -118,7 +124,7 @@ const SearchWrap = styled.div`
     :hover {
       transform: scale(1.01);
 
-      border: 2px solid #3e6544eb;;
+      border: 2px solid #3e6544eb;
 
       cursor: pointer;
     }

@@ -4,31 +4,36 @@ import styled from "styled-components"
 import FormRow from "../components/FormRow"
 import { globalContext } from "../context/globalContext"
 
-
 const Login = () => {
   const [isMember, setIsMember] = useState(false)
-  const {user, setUser} = useContext(globalContext)
+  const { user, setUser } = useContext(globalContext)
   const navigate = useNavigate()
 
   const toggleMember = () => {
     setIsMember(!isMember)
   }
 
-
   const onSubmit = (e) => {
     e.preventDefault()
-    const user = {email: e.target.email.value, password: e.target.password.value, name: e.target.name.value }
-    fetch(`http://localhost:8000/users/${isMember?"login":"register"}`, {method:"POST", headers: {"Content-Type":"application/json"}, body: JSON.stringify(user)})
-    .then(res => res.json())
-    .then(result => {
-      console.log(result)
-      if(result.success){
-        console.log(result)
-        setUser (result.user)
-        isMember?navigate("/profile"):
-        setIsMember(true)
-      }
+    const user = {
+      email: e.target.email.value,
+      password: e.target.password.value,
+      name: e.target.name.value,
+    }
+    fetch(`http://localhost:8000/users/${isMember ? "login" : "register"}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(user),
     })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result)
+        if (result.success) {
+          console.log(result)
+          setUser(result.user)
+          isMember ? navigate("/profile") : setIsMember(true)
+        }
+      })
   }
 
   return (
@@ -43,32 +48,19 @@ const Login = () => {
               onClick={toggleMember}
               className="signup-btn"
             >
-              {isMember ? "Sign up now!" : "Login"}
+              {isMember ? "Not yet a member? Sign up now!" : "Already a member?"}
             </StyledButton>
           </p>
         </Headers>
         {/* name input */}
 
-        {!isMember && (
-          <FormRow
-            type="text"
-            name="name"
-          />
-        )}
+        {!isMember && <FormRow type="text" name="name" />}
 
         {/* email input */}
-        <FormRow
-          type="email"
-          name="email"
-        />
+        <FormRow type="email" name="email" />
         {/*  password input */}
-        <FormRow
-          type="password"
-          name="password"
-        />
-        <SubmitButton type="submit" className="btn btn-block">
-          Submit
-        </SubmitButton>
+        <FormRow type="password" name="password" />
+        <SubmitButton type="submit">Submit</SubmitButton>
       </form>
     </Wrapper>
   )
@@ -82,51 +74,52 @@ const Wrapper = styled.div`
   align-items: center;
   margin-top: 5rem;
 
+  .form {
+    width: 35rem;
+    padding: 5rem 5.5rem;
+    margin: 3rem auto;
+    border: 1px solid var(--form-color);
+    border-radius: 40px;
+    background-color: var(--form-color);
+  }
 
+  .form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    text-transform: capitalize;
+  }
+  .form-input,
+  .form-textarea,
+  .form-select {
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    border-radius: 10px;
+    border: 1.8px solid #3e6544eb;
+  }
+  .form-input,
+  .form-select,
+  .btn-block {
+    height: 35px;
+  }
+  .form-row {
+    margin-bottom: 0.8rem;
+  }
 
-.form {
-  width: 35rem;
-  padding: 5rem 5.5rem;
-  margin: 3rem auto;
-  border: 1px solid var(--form-color);
-  border-radius: 40px;
-  background-color: var(--form-color);
-}
-
-.form-label {
-  display: block;
-  margin-bottom: 0.5rem;
-  text-transform: capitalize;
-}
-.form-input,
-.form-textarea,
-.form-select {
-  width: 100%;
-  padding: 0.375rem 0.75rem;
-  border-radius: 10px;
-}
-.form-input,
-.form-select,
-.btn-block {
-  height: 35px;
-}
-.form-row {
-  margin-bottom: 1rem;
-}
-
-.form-textarea {
-  height: 7rem;
-}
-
+  .form-textarea {
+    height: 7rem;
+  }
 `
 
 const Headers = styled.div`
   text-align: center;
   font-size: 18.1px;
   h3 {
+    font-family: "Roboto", sans-serif;
+    letter-spacing: 1.5px;
     margin-bottom: 2rem;
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-weight: 400;
+    color: #3e6544eb;
   }
 `
 const StyledButton = styled.button`
@@ -136,6 +129,7 @@ const StyledButton = styled.button`
   cursor: pointer;
   font-size: 18.1px;
   margin-left: 5px;
+  margin-bottom: 20px;
   letter-spacing: 0.2px;
   transition: ease-out 0.2s;
 
@@ -146,24 +140,25 @@ const StyledButton = styled.button`
 `
 
 const SubmitButton = styled.button`
+  font-family: "Roboto", sans-serif;
   margin: 0 auto;
   display: block;
-  color: black;
+  margin-top: 4rem;
   text-decoration: none;
-  padding: 3px 35px 3px 35px;
-
-  font-size: 18px;
-  border-radius: 10px;
-  border: solid 1px #65a46fd6;
+  padding: 6px 25px 6px 25px;
+  border: transparent;
+  font-size: 17px;
+  font-weight: 300;
+  border-radius: 40px;
+  border: 2px solid #3e6544eb;
+  background-color: transparent;
   cursor: pointer;
-  background-color: #fff3d6;
-  -webkit-box-shadow: -1px 4px 18px -10px #bababa;
-  box-shadow: -1px 4px 18px -10px #bababa;
+  transition: ease-in-out 0.2s;
 
-  /*   border: solid 1px #ffb703; */
-  transition: ease-out 0.2s;
   :hover {
-    border: solid 1px #65a46fd6;
-    transition: ease-in 0.1s;
+    color: #fff3d6;
+    font-weight: 400;
+    border: 2px solid #3e654479;
+    transition: ease-in-out 0.1s;
   }
 `
