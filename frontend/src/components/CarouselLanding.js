@@ -5,8 +5,51 @@ import image1 from '../media/testCaroImages/image1.jpg';
 import image2 from '../media/testCaroImages/image2.jpg';
 import image3 from '../media/testCaroImages/image3.jpg';
 import styles from './CarouselLanding.module.css';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
-const CarouselLanding = () => {
+const MySlider = () => {
+    let settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1, 
+      centerMode: true,
+      centerPadding: '60px'
+    };
+    return (
+        <div className="slider-container">
+            
+<Slider {...settings}>  
+        <div>
+            <img src={image1} alt="salad"></img>
+            <h3>Image One</h3>
+            <p>Lorem ipsum dolor sit amet.</p>
+        </div>
+        <div>
+            <img src={image2} alt="chicken"></img>
+            <h3>Image Two</h3>
+            <p>Lorem ipsum dolor sit amet.</p>
+        </div>
+        <div>
+            <img src={image3} alt="broccoli" />
+            <h3>Image Three</h3>
+            <p>Lorem ipsum dolor sit amet.</p>
+        </div>
+      </Slider>
+
+        </div>
+    
+      
+    );
+  } 
+
+export default MySlider;
+  
+
+/* const CarouselLanding = () => {
   return (
     <>
     <Carousel indicators={false} className="carousel-dark">
@@ -79,4 +122,4 @@ const CarouselLanding = () => {
   );
 }
 
-export default CarouselLanding;
+export default CarouselLanding; */

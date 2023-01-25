@@ -10,15 +10,18 @@ import Favourites from "./routes/Favourites"
 import MyPantry from "./routes/MyPantry"
 import NavBar from "./components/NavBar"
 import Container from "react-bootstrap/Container";
-import CarouselLanding from "./components/CarouselLanding";
+// import CarouselLanding from "./components/CarouselLanding";
+import MySlider from "./components/CarouselLanding"
 
 function App() {
 
   return ( <div>
     <NavBar/>
-    <Container>
+    {/* <Container>
       <CarouselLanding />
-    </Container>
+    </Container> */}
+    <MySlider />
+    
     <Routes>
       <Route path="/" element={<Home />} />{" "}
       <Route path="/login" element={<Login />} />

@@ -1,4 +1,4 @@
-.container-img-carousel {
+/* .container-img-carousel {
     text-align: right
 }
 
@@ -6,9 +6,16 @@
     height: auto;
     width: auto;
     margin: auto;
-    /* object-fit: fill; */
-}
+    object-fit: fill;
+} */
 
 h3, p {
     color: black;
 }
+
+.slider-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 500px; /* set the desired height */
+  }
