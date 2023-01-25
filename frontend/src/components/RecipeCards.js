@@ -22,7 +22,11 @@ export default function RecipeCards() {
                 <TitleTextWrapper>
                   <CardTitle>
                     {item.label}
-              {      <p>Preparation time: {item.totalTime} mins </p>}
+                    <p>
+                {item.totalTime > 0
+                  ? `Preparation time: ${item.totalTime} mins`
+                  : ""}
+              </p>
                   </CardTitle>
                 </TitleTextWrapper>
               </div>
