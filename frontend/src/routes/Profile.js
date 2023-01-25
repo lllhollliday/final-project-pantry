@@ -93,4 +93,6 @@ const Line = styled.div`
   width: 150%;
   margin-left: -3.9rem;
   margin-top: 1rem;
+  margin-bottom: 12rem;
 `
+
