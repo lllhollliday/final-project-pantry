@@ -1,58 +1,58 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 import FormRow from "../components/FormRow"
+import { globalContext } from "../context/globalContext"
 
-const initialState = {
-  name: "",
-  email: "",
-  password: "",
-  isMember: true,
-}
 
 const Login = () => {
-  const [values, setValues] = useState(initialState)
+  const [isMember, setIsMember] = useState(false)
+  const {user, setUser} = useContext(globalContext)
+  const navigate = useNavigate()
 
   const toggleMember = () => {
-    setValues({ ...values, isMember: !values.isMember })
+    setIsMember(!isMember)
   }
 
-  const handleChange = (e) => {
-    setValues({ ...values, [e.target.name]: e.target.value })
-  }
+
   const onSubmit = (e) => {
     e.preventDefault()
-    const { name, email, password, isMember } = values
-    if (!email || !password || (!isMember && !name)) {
-      /*       displayAlert() */
-      return
-    }
-    console.log(values)
+    const user = {email: e.target.email.value, password: e.target.password.value, name: e.target.name.value }
+    fetch(`http://localhost:8000/users/${isMember?"login":"register"}`, {method:"POST", headers: {"Content-Type":"application/json"}, body: JSON.stringify(user)})
+    .then(res => res.json())
+    .then(result => {
+      console.log(result)
+      if(result.success){
+        console.log(result)
+        setUser (result.user)
+        isMember?navigate("/profile"):
+        setIsMember(true)
+      }
+    })
   }
+
   return (
     <Wrapper className="full-page">
       <form className="form" onSubmit={onSubmit}>
         <Headers>
-          <h3>{values.isMember ? "Login" : "Sign Up"}</h3>
+          <h3>{isMember ? "Login" : "Sign Up"}</h3>
 
           <p>
-            {values.isMember ? "New user?" : "Already a member?"}
             <StyledButton
               type="button"
               onClick={toggleMember}
               className="signup-btn"
             >
-              {values.isMember ? "Sign up now!" : "Login"}
+              {isMember ? "Sign up now!" : "Login"}
             </StyledButton>
           </p>
         </Headers>
         {/* name input */}
 
-        {!values.isMember && (
+        {!isMember && (
           <FormRow
             type="text"
             name="name"
-            value={values.name}
-            handleChange={handleChange}
           />
         )}
 
@@ -60,15 +60,11 @@ const Login = () => {
         <FormRow
           type="email"
           name="email"
-          value={values.email}
-          handleChange={handleChange}
         />
         {/*  password input */}
         <FormRow
           type="password"
           name="password"
-          value={values.password}
-          handleChange={handleChange}
         />
         <SubmitButton type="submit" className="btn btn-block">
           Submit
