@@ -58,6 +58,7 @@ router.get("/", async (req, res) => {
           })
       })
       let resolvePromises = await Promise.all(allImagePromises)
+      console.log("this is data.hits:" , data.hits);
 
       let myRecipes = data.hits.map((item, i) => {
         /* console.log(resolvePromises[0]) */
