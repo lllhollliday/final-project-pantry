@@ -13,34 +13,46 @@
 
 .button,
 .landingButton {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.4px;
   color: black;
   text-decoration: none;
-  padding: 3px 35px 3px 35px;
+  padding: 4px 18px 4px 18px;
   margin: 6px;
 
-  font-size: 18px;
-  border-radius: 10px;
+  font-size: 13px;
+  border-radius: 6px;
 
-/*   background-color: #fff3d6;
- */  -webkit-box-shadow: -1px 4px 18px -10px #bababa;
+  transition: ease-in-out 0.2s;
+
+  /*   background-color: #fff3d6;
+ */
+  -webkit-box-shadow: -1px 4px 18px -10px #bababa;
   box-shadow: -1px 4px 18px -10px #bababa;
 }
 
 .button {
-  border: solid 1px #ffb8038e;
-  transition: ease-out 0.2s;
+  border-bottom: solid 1px #ffb8038e;
+
 }
 .button:hover {
-  border: solid 1px #ffb803;
-  transition: ease-in 0.1s;
+  background-color: #fff3d695;
+  transition: ease-out 0.4s;
+
 }
 .landingButton {
+  font-size: 15px;
+  font-weight: 400;
+  padding: 6px 25px 6px 25px;
   background-color: #65a46f;
   transition: ease-out 0.4s;
+  color: #fff3d6;
 }
 .landingButton:hover {
-  background-color: #65a46fd6;
-  transition: ease-in 0.15s;
+  background-color: #65a46f52;
+  transition: ease-in 0.25s;
+  color: #35553aeb; 
 }
 
 img {
