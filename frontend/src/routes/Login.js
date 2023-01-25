@@ -149,7 +149,7 @@ const SubmitButton = styled.button`
   border: transparent;
   font-size: 17px;
   font-weight: 300;
-  border-radius: 10px;
+  border-radius: 40px;
   border: 2px solid #3e6544eb;
   background-color: transparent;
   cursor: pointer;
@@ -158,6 +158,7 @@ const SubmitButton = styled.button`
   :hover {
     color: #fff3d6;
     font-weight: 400;
+    border: 2px solid #3e654479;
     transition: ease-in-out 0.1s;
   }
 `

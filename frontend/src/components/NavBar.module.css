@@ -34,12 +34,11 @@
 
 .button {
   border-bottom: solid 1px #ffb8038e;
-
+  border-radius: 6px;
 }
 .button:hover {
   background-color: #fff3d695;
   transition: ease-out 0.4s;
-
 }
 .landingButton {
   font-size: 15px;
@@ -48,11 +47,12 @@
   background-color: #65a46f;
   transition: ease-out 0.4s;
   color: #fff3d6;
+  border-radius: 40px;
 }
 .landingButton:hover {
   background-color: #65a46f52;
   transition: ease-in 0.25s;
-  color: #35553aeb; 
+  color: #35553aeb;
 }
 
 img {
