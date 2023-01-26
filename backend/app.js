@@ -5,7 +5,6 @@ import axios from "axios";
 import cors from "cors"
 import recipesRoute from './routes/recipesroute.js';
 import usersRoute from './routes/usersroute.js';
-import favouritesRoute from './routes/favouritesroute.js';
 import imagesRoute from './routes/imagesroute.js'
 dotenv.config()
 
@@ -50,7 +49,6 @@ app.use(morgan("dev"))
 // Routes
 app.use("/recipes", recipesRoute);
 app.use("/users", usersRoute);
-app.use("/favourites", favouritesRoute)
 app.use("/images", imagesRoute)
   //error handling
 app.use((req, res, next) => {
