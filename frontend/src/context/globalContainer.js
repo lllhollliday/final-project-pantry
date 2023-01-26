@@ -15,7 +15,7 @@ export default function GlobalContainer(props) {
         .then(result => {
             console.log(result.recipes[0])
             setRecipes(result.recipes)
-            setSliderItems(result.recipes.slice(0, 3))
+            setSliderItems(result.recipes.slice())
         })
     }, [])
 
