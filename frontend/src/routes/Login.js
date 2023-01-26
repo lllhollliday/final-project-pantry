@@ -7,7 +7,7 @@ import { globalContext } from "../context/globalContext"
 
 const Login = () => {
   const [isMember, setIsMember] = useState(false)
-  const {user, setUser} = useContext(globalContext)
+  const { setUser} = useContext(globalContext)
   const navigate = useNavigate()
 
   const toggleMember = () => {

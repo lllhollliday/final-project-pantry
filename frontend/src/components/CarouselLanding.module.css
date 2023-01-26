@@ -10,12 +10,17 @@
 } */
 
 h3, p {
-    color: black;
+    color: black
+    
 }
 
-.slider-container {
+.slider {
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 500px; /* set the desired height */
+    font-size: 100px;
+  }
+
+  .slider-container{
   }

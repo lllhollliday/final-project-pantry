@@ -1,14 +1,13 @@
 import { useContext, useState } from "react"
 import { globalContext } from "../context/globalContext"
 import styled from "styled-components"
-import { useLoaderData } from "react-router-dom"
 
 function SearchMenu() {
   const [cuisine, setCuisine] = useState("")
   const [mealType, setMealType] = useState("")
   const [health, setHealth] = useState("")
 
-  const { recipes, setRecipes } = useContext(globalContext)
+  const { setRecipes } = useContext(globalContext)
 
   const fetchRecipe = (e) => {
     e.preventDefault()
