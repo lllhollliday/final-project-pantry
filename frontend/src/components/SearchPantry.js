@@ -31,13 +31,6 @@ function SearchPantry({ selectedIng }) {
   return (
     <Wrapper>
       <form onSubmit={findRecipe}>
-        <SearchWrap>
-          {/*  <input
-            name="query"
-            type="text"
-            placeholder="what would you like to cook with?"
-          /> */}
-        </SearchWrap>
         <DropDowns>
           <StyledSelect
             name="cuisineType"
@@ -81,41 +74,6 @@ const Wrapper = styled.div`
   align-items: center;
   width: 60vw;
 `
-
-const SearchWrap = styled.div`
-  display: flex;
-  justify-content: center;
-  justify-content: space-around;
-  margin-bottom: 10px;
-
-  input {
-    border-radius: 8px;
-    width: 10px;
-    padding: 4px 0px 4px 8px;
-    border: 1px solid #3e6544eb;
-    font-size: 15px;
-  }
-  input:focus {
-    background-color: #fff;
-    outline: #65a46f50;
-    border: 2.5px solid #ec5f18;
-  }
-
-  button {
-    width: 4rem;
-    border-radius: 8px;
-    border: 1px solid #3e6544eb;
-    background-color: #fff;
-    :hover {
-      transform: scale(1.01);
-
-      border: 2px solid #3e6544eb;
-
-      cursor: pointer;
-    }
-  }
-`
-
 const DropDowns = styled.div`
   width: 60vw;
   display: flex;

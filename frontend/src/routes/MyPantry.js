@@ -27,7 +27,6 @@ export default function MyPantry() {
   }
 
   // remove item from pantry (button only renders when selected)
-
   const handleRemove = (removeIngredient) => {
     setIngredient((prevIngredients) =>
       prevIngredients.filter((ingredient) => ingredient !== removeIngredient)
@@ -71,9 +70,11 @@ export default function MyPantry() {
         <div>
           <h2>Cook with: {selectedIng.join(", ")}</h2>
 
-          <SearchPantry selectedIng={selectedIng} />
+          <ResponsiveWrap>
+            <SearchPantry selectedIng={selectedIng} />
+            <RecipeCards />
+          </ResponsiveWrap>
 
-          <RecipeCards />
         </div>
       </RightBlock>
     </Wrapper>
@@ -86,6 +87,10 @@ const Wrapper = styled.div`
   margin-top: 3rem;
   justify-content: center;
   width: 90vw;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
 `
 const SidePantry = styled.div`
   border: 1px solid red;
@@ -93,7 +98,7 @@ const SidePantry = styled.div`
   padding: 1rem;
   width: 40vw;
   h1 {
-    font-size: 25px;
+    font-size: 28px;
     font-weight: 500;
   }
   li {
@@ -116,12 +121,43 @@ const SidePantry = styled.div`
     width: 13rem;
     padding: 4px 6px;
     border-radius: 10px;
+    border: 1px solid #fff3d6;
+  }
+
+  @media (max-width: 600px) {
+    width: 100%;
+    display: flex;
+
+    input {
+      margin-left: 1rem;
+      border: 1px solid #3e6544ce;
+      height: 2rem;
+    }
   }
 `
 
 const RightBlock = styled.div`
   border: 1px solid orange;
+  border-radius: 10px;
   width: 65vw;
   margin-left: 2rem;
   padding: 1rem;
+  h2 {
+    font-weight: 500;
+  }
+
+  @media (max-width: 600px) {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 1rem;
+  }
+`
+const ResponsiveWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto 0;
+  
+
 `
