@@ -17,7 +17,7 @@ const CarouselLanding = () => {
                     key={index} 
                     style={{
                         width:"100vw", 
-                        height:"400px", 
+                        height:"25rem", 
                         textAlign:"center", 
                         paddingTop:"50px", 
                         borderRadius: "2rem"
@@ -44,18 +44,32 @@ export default CarouselLanding;
 
 const SliderContainer = styled.div`
 display:flex;
+justify-content: center;
 align-items: center;
 `;
 
 const StyledImg = styled.img`
   width: 35vw;
-  height: 300px;
+  height: 400px;
   border-radius: 2rem;
+  object-fit: cover;
+
+  @media(max-width:1800px){
+    width: 30%;
+    height: auto;
+    border-radius: 2rem;
+  }
+
+  @media(max-width: 992px) {
+    width: 40%;
+    height: auto;
+    border-radius: 2rem;
+  }
 
   @media (max-width: 768px) {
     width: 80%;
     height: auto;
-    border-radius: 0;
+    border-radius: 2rem;
   }
 `;
 
