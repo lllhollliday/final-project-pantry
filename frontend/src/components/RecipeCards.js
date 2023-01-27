@@ -12,7 +12,6 @@ export default function RecipeCards() {
     <FlexWrap>
       <Wrapper>
         {recipes?.map((item) => {
- 
           return (
             <StyledLink to={"/recipe/" + item.label} state={item}>
               <div>
@@ -22,7 +21,11 @@ export default function RecipeCards() {
                 <TitleTextWrapper>
                   <CardTitle>
                     {item.label}
-              {      <p>Preparation time: {item.totalTime} mins </p>}
+                    <p>
+                      {item.totalTime > 0
+                        ? `Preparation time: ${item.totalTime} mins`
+                        : ""}
+                    </p>
                   </CardTitle>
                 </TitleTextWrapper>
               </div>
@@ -42,44 +45,66 @@ const FlexWrap = styled.div`
 
 const Wrapper = styled.div`
   justify-items: center;
-  width: 50rem;
+  width: 90%;
   margin: 4rem 0rem;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-column-gap: 20px;
-  grid-row-gap: 8rem;
+  grid-row-gap: 5rem;
+
+  @media (max-width: 480px) {
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `
 
 const CardImg = styled.div`
   width: 100%;
-  min-height: 17rem;
-  max-height: 17rem;
+  min-height: 12rem;
+  max-height: 15rem;
   border-radius: 2rem;
   //border: 1px solid #ffb8038e;
   -webkit-box-shadow: -7px 3px 31px -15px rgba(133, 133, 133, 0.81);
   box-shadow: -7px 3px 31px -15px rgba(133, 133, 133, 0.81);
   overflow: hidden;
 
-  img {
-    object-fit: cover;
-    width: 200%;
-    height: 100%;
+  @media (max-width: 600px) {
+    min-height: 10rem;
+  }
 
+  @media (max-width: 480px) {
+    min-height: 25rem;
+    //max-width: 23rem;
+  }
+
+  img {
+    object-fit: contain;
+    //object-position: 10px;
+    width: 150%;
+    height: 100%;
+    transform: scale(1.3);
+
+    @media (max-width: 480px) {
+      width: 100%;
+      transform: scale(1.58);
+    }
   }
 `
 const TitleTextWrapper = styled.div`
   text-align: center;
   margin-top: 10px;
-
 `
 
 const CardTitle = styled.div`
-  font-size: 20px;
+  font-size: 16px;
+  letter-spacing: 0.2px;
   color: black;
 
-
   p {
-    font-size: 15px;
+    font-size: 13px;
   }
 `
 

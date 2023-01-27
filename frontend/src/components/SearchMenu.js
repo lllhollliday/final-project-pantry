@@ -12,7 +12,7 @@ function SearchMenu() {
   const fetchRecipe = (e) => {
     e.preventDefault()
     console.log(cuisine)
-    console.log("hi some text", e.target.query.value)
+
     fetch(
       `http://localhost:8000/recipes?q=${e.target.query.value}&cuisineType=${cuisine}&mealType=${mealType}&health=${health}`
     )
@@ -117,7 +117,7 @@ const SearchWrap = styled.div`
     :hover {
       transform: scale(1.01);
 
-      border: 2px solid #3e6544eb;;
+      border: 2px solid #3e6544eb;
 
       cursor: pointer;
     }

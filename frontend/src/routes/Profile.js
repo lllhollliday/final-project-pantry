@@ -70,11 +70,13 @@ const Links = styled.div`
 const StyledNavLink = styled(NavLink)`
   color: black;
   text-decoration: none;
-  padding: 3px 35px 3px 35px;
+  padding: 3px 30px 3px 30px;
   margin: 5px;
-
-  font-size: 16px;
+letter-spacing: 0.4px;
+  font-size: 13px;
+  font-weight: 300;
   border-radius: 10px;
+  font-family: "Roboto", sans-serif;
 
   background-color: #fff3d684;
   text-decoration: none;
@@ -93,4 +95,5 @@ const Line = styled.div`
   width: 150%;
   margin-left: -3.9rem;
   margin-top: 1rem;
+  margin-bottom: 12rem;
 `
