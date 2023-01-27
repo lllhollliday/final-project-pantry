@@ -22,17 +22,16 @@ const CarouselLanding = () => {
                         paddingTop:"50px", 
                         borderRadius: "2rem"
                         }}>
-                    <StyledImg 
-                        src={item.image} 
-                        alt={item.label} 
-                        // style={{width:"35vw", height:"300px", borderRadius: "25px"}} 
-                        interval={100}
-                        />
-                    <h3 style={{
-                        
-                    }}>
-                        {item.label}
-                    </h3>
+                    <SliderContainer>
+                        <StyledImg 
+                            src={item.image} 
+                            alt={item.label} 
+                            interval={100}
+                            />
+                        <Label style={{}}>
+                            {item.label}
+                        </Label>
+                    </SliderContainer>
                     {/* <p>description here</p> */}
                 </CarouselItem>
                 )
@@ -42,6 +41,11 @@ const CarouselLanding = () => {
 };
 
 export default CarouselLanding;
+
+const SliderContainer = styled.div`
+display:flex;
+align-items: center;
+`;
 
 const StyledImg = styled.img`
   width: 35vw;
@@ -53,4 +57,8 @@ const StyledImg = styled.img`
     height: auto;
     border-radius: 0;
   }
+`;
+
+const Label = styled.h3`
+margin-left: 1rem;
 `;
