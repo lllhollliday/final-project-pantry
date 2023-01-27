@@ -5,6 +5,7 @@ export default function GlobalContainer(props) {
 
     const [ recipes, setRecipes ] = useState(null)
     const [ user, setUser ] = useState(null)
+    const [ sliderItems, setSliderItems] = useState([]);
 
     useEffect( () => {
         fetch(`http://localhost:8000/recipes?random=true`)
@@ -13,11 +14,12 @@ export default function GlobalContainer(props) {
         .then(result => {
             console.log(result.recipes[0])
             setRecipes(result.recipes)
+            setSliderItems(result.recipes.slice())
         })
     }, [])
 
     return(
-        <globalContext.Provider value={{recipes, setRecipes, user, setUser}}>
+        <globalContext.Provider value={{recipes, setRecipes, user, setUser, sliderItems}}>
 
             {props.children}
 
