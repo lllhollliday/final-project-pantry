@@ -1,4 +1,6 @@
-import { useContext} from "react"
+
+import axios from "axios"
+import { useContext, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import styled from "styled-components"
 import { globalContext } from "../context/globalContext"
@@ -6,7 +8,26 @@ import { globalContext } from "../context/globalContext"
 // home page to render the top random recipes as the first cards
 
 export default function RecipeCards() {
-  const { recipes } = useContext(globalContext)
+  const { recipes, user, setUser } = useContext(globalContext)
+
+  const handleLike = async(item) => {
+    console.log(item);
+    try {
+      const res = await axios.put(`http://localhost:8000/users/favourites`, {item, id: user._id})
+      // setFavourite([...favourites, item])
+
+      setUser({
+        ...user,
+        favourites: res.data.favourites
+      })
+
+      console.log(res);
+    } catch(err){
+      console.log(err);
+    }
+  }
+
+
 
   return (
     <FlexWrap>
@@ -17,6 +38,7 @@ export default function RecipeCards() {
               <div>
                 <CardImg key={item._id}>
                   <img src={item.image} alt={item.label} />
+             
                 </CardImg>{" "}
                 <TitleTextWrapper>
                   <CardTitle>
@@ -26,7 +48,10 @@ export default function RecipeCards() {
                         ? `Preparation time: ${item.totalTime} mins`
                         : ""}
                     </p>
-                  </CardTitle>
+                  </CardTitle>     
+                  
+                  <button onClick={() => handleLike(item)}>{user?.favourites?.findIndex(fav => fav.label === item.label) > -1 ? "unlike pic" : "like pic"}</button>
+                  
                 </TitleTextWrapper>
               </div>
             </StyledLink>
@@ -105,6 +130,7 @@ const CardTitle = styled.div`
 
   p {
     font-size: 13px;
+    
   }
 `
 
