@@ -1,5 +1,5 @@
 import SearchMenu from "../components/SearchMenu"
-import RecipeCards from "../components/RecipeCards.js"
+import RecipeCards from "../components/RecipeCards"
 import CarouselLanding from "../components/CarouselLanding"
 
 export default function Home() {
