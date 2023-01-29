@@ -11,7 +11,7 @@
 
  :root {
   /* colors */
-  --light-orange: #fff3d6;
+  --light-orange: #fff3d69c;
   --bright-orange: #ffb803;
   --solid-green: #65a46f; --solid-green: #65a46f5a;
   --transl-green: #65a46f14;
@@ -21,7 +21,7 @@
   --form-color: #ec5f18;
   --form-color: #fb8600a0;
   --text-color: #3e6544ce;
-  --text-color2: #3e654479;
+  --text-color2: #3e6544ac;
 } /* 
 .form {
   width: 35rem;

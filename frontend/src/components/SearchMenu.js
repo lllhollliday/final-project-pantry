@@ -84,6 +84,7 @@ function SearchMenu() {
 export default SearchMenu
 
 const Wrapper = styled.div`
+
   margin-top: 5rem;
   display: flex;
   justify-content: center;
