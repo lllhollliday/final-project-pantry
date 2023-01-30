@@ -48,7 +48,9 @@ const Login = () => {
               onClick={toggleMember}
               className="signup-btn"
             >
-              {isMember ? "Not yet a member? Sign up now!" : "Already a member?"}
+              {isMember
+                ? "Not yet a member? Sign up now!"
+                : "Already a member?"}
             </StyledButton>
           </p>
         </Headers>
@@ -74,27 +76,37 @@ const Wrapper = styled.div`
   align-items: center;
   margin-top: 5rem;
 
+
   .form {
+    
     width: 35rem;
     padding: 5rem 5.5rem;
     margin: 3rem auto;
-    border: 1px solid var(--form-color);
+background-color: var(--form-background-orange);
+  border: 1px solid var(--form-background-orange);
     border-radius: 40px;
-    background-color: var(--form-color);
-  }
+  }  
 
   .form-label {
+    font-family: "Roboto", sans-serif;
     display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.2rem;
     text-transform: capitalize;
+    font-size: 15px;
+    margin-left: 2px;
+    font-weight: 400;
   }
   .form-input,
   .form-textarea,
   .form-select {
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
     width: 100%;
     padding: 0.375rem 0.75rem;
     border-radius: 10px;
     border: 1.8px solid #3e6544eb;
+    margin-bottom: 0.7rem;
+
   }
   .form-input,
   .form-select,
@@ -111,6 +123,7 @@ const Wrapper = styled.div`
 `
 
 const Headers = styled.div`
+
   text-align: center;
   font-size: 18.1px;
   h3 {
@@ -123,11 +136,12 @@ const Headers = styled.div`
   }
 `
 const StyledButton = styled.button`
+font-family: "Roboto", sans-serif;
   color: #3e6544eb;
   background-color: transparent;
   border: none;
   cursor: pointer;
-  font-size: 18.1px;
+  font-size: 16px;
   margin-left: 5px;
   margin-bottom: 20px;
   letter-spacing: 0.2px;
