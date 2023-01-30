@@ -11,7 +11,7 @@ const Navbar = () => {
   const logout = () => {
     localStorage.removeItem("token");
     setUser(null);
-    navigate("/");
+    Navigate("/");
   };
 
   return (
@@ -39,7 +39,7 @@ const Navbar = () => {
               <NavLink className={styles["button"]} to="/settings">
                 Settings
               </NavLink>{" "}
-              <NavLink className={styles["button"]} to="/">
+              <NavLink className={styles["button"]} to="/" onClick={logout}>
                 Logout
               </NavLink>{" "}
             </>
