@@ -2,15 +2,21 @@ import styled from "styled-components"
 import { NavLink } from "react-router-dom"
 import profileImg from "../media/profileDefault3.png"
 import RecipeCards from "../components/RecipeCards"
+import { useContext } from "react";
+import { globalContext } from "../context/globalContext";
 
 export default function Profile() {
+
+    const {user} = useContext(globalContext);
+
+
   return (
     <FlexWrapper>
       <FlexContainer>
         <img src={profileImg} alt="Profile" />
         <Header>
-          <h1>Welcome back</h1>
-          <h2>User!</h2>
+          <h1>Welcome back,</h1>
+          <h2>{user.firstName}!</h2>
         </Header>
       </FlexContainer>
 
