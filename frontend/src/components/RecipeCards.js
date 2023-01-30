@@ -8,31 +8,6 @@ import { faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons"
 import { faHeart as regHeart } from "@fortawesome/free-regular-svg-icons"
 import Modal from "react-modal"
 
-
-const like = (
-  <FontAwesomeIcon
-    icon={solidHeart}
-    style={{
-      color: "#ffb803",
-      position: "absolute",
-      top: "6px",
-      right: "5px",
-    }}
-  />
-)
-
-const unlike = (
-  <FontAwesomeIcon
-    icon={regHeart}
-    style={{
-      color: " #ffb803",
-      position: "absolute",
-      top: "6px",
-      right: "5px",
-    }}
-  />
-)
-
 // home page to render the top random recipes as the first cards
 
 export default function RecipeCards() {
@@ -108,23 +83,20 @@ export default function RecipeCards() {
                 style={{
                   overlay: {
                     position: "fixed",
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
+
                     background: "#ffe8d77f",
-                    opacity: "0.09",
+                    opacity: "0.14",
                   },
                   content: {
                     position: "absolute",
                     top: "50%",
                     left: "50%",
                     transform: "translate(-50%, -50%)",
-                    width: "20rem",
-                    height: "12rem",
+                    width: "15rem",
+                    height: "10rem",
                     border: "1px solid #ccc",
 
-                    background: "#3e6544",
+                    background: "#ffb803",
                     overflow: "auto",
                     WebkitOverflowScrolling: "touch",
                     borderRadius: "10%",
@@ -137,14 +109,7 @@ export default function RecipeCards() {
               >
                 <StyledModalContent>
                   <button onClick={toggleModal}>x</button>
-                  <h2
-                    style={{
-                      color: "#fff",
-                      fontSize: "25px",
-                      marginTop: "35px",
-                      marginLeft: "8px",
-                    }}
-                  >
+                  <h2>
                     Please <StyledLinkModal to="/login">login</StyledLinkModal>{" "}
                     to save your favourites.
                   </h2>
@@ -259,7 +224,8 @@ const StyledButton = styled.button`
 `
 
 const StyledLinkModal = styled(Link)`
-  color: orange;
+  font-family: "Roboto", sans-serif;
+  color: #3e6544ce;
   text-decoration: none;
 
   &:hover {
@@ -273,22 +239,58 @@ const StyledModalContent = styled.div`
   justify-content: "center";
   flex-direction: "column";
   padding: "10px";
-  height: "100%";
+
+  h2 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+    color: #fff;
+    font-size: 19px;
+    margin-top: 23px;
+    margin-left: "8px";
+  }
 
   button {
-    width: 1.6rem;
-    border: 1px solid orange;
+    font-family: "Roboto", sans-serif;
+    width: 23px;
+    height: 23px;
+    font-size: 16px;
+    border: 1px solid transparent;
     color: white;
-    font-weight: 600;
-    background-color: #3e654479;
-    border-radius: 8px;
-    padding-right: 1px;
+    font-weight: 400;
+
+    background-color: #ffb803;
+    border-radius: 30%;
+
     position: absolute;
-    top: 25px;
-    right: 25px;
+    top: 9px;
+    right: 14px;
 
     :hover {
       border: 1px solid orange;
     }
   }
 `
+const like = (
+  <FontAwesomeIcon
+    icon={solidHeart}
+    style={{
+      color: "#ffb803",
+      position: "absolute",
+      top: "6px",
+      right: "5px",
+    }}
+  />
+)
+
+const unlike = (
+  <FontAwesomeIcon
+    icon={regHeart}
+    style={{
+      color: " #ffb803",
+      position: "absolute",
+      top: "6px",
+      right: "5px",
+    }}
+  />
+)
