@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons"
 import { faHeart as regHeart } from "@fortawesome/free-regular-svg-icons"
 import Modal from "react-modal"
-import { border, fontSize, height } from "@mui/system"
+
 
 const like = (
   <FontAwesomeIcon
