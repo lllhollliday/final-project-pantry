@@ -167,3 +167,17 @@ export const addFavoritesItems = async ( req, res, next ) => {
         next(err)
     }
 }
+
+export const addIngredientToMyPantry = async (req, res, next) => {
+    try {
+
+        const user = await usersCollection.findById(req.body.userId)
+        user.pantry.push(req.body.item)
+        await user.save()
+
+        res.json({success: true, data: user})
+    }
+    catch(err) {
+        next(err)
+    }
+}
