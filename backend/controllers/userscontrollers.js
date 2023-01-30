@@ -106,7 +106,7 @@ export const loginUser = async (req, res, next) => {
 export const updateUser = async (req, res, next) => {
     try{
         const id = req.params.id
-        const updatedUser = await usersCollection.find(id)
+        const updatedUser = await usersCollection.findByIdAndUpdate(id, req.body, {new: true})
         res.json({success: true, user: updatedUser})
     }
     catch(err){

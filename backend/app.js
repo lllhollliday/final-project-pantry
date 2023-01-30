@@ -5,7 +5,8 @@ import axios from "axios";
 import cors from "cors"
 import recipesRoute from './routes/recipesroute.js';
 import usersRoute from './routes/usersroute.js';
-import imagesRoute from './routes/imagesroute.js'
+import imagesRoute from './routes/imagesroute.js';
+import fileupload from 'express-fileupload';
 dotenv.config()
 
 // Connecting to database / authenticate user
@@ -16,6 +17,7 @@ import errorHandlerMiddleware from "./middleware/errorHandler.js"
 import notFoundMiddleware from "./middleware/notFound.js"
 
 const app = express()
+app.use(fileupload());
 
 app.use(cors({origin:"http://localhost:3000"}))
 
