@@ -1,7 +1,9 @@
 import { useContext } from "react"
 import { Link } from "react-router-dom"
 import { globalContext } from "../context/globalContext"
-import { Carousel, CarouselItem} from "react-bootstrap"
+import { Carousel, CarouselItem } from "react-bootstrap"
+
+
 // import { Row, Col } from 'react-bootstrap';
 // import styles from './CarouselLanding.module.css';
 import styled from "styled-components"
@@ -10,37 +12,38 @@ const CarouselLanding = () => {
   const { sliderItems } = useContext(globalContext)
 
   return (
-    <Carousel controls={true} indicators={false}>
-      {sliderItems.map((item, index) => {
-        return (
-     
-          <CarouselItem
-            key={index}
-            style={{
-              width: "100vw",
-              textAlign: "center",
-              paddingTop: "50px",
-              borderRadius: "2rem",
-            }}
-          >
-            <StyledLink to={"/recipe/" + item.label} state={item}>
-              <SliderContainer>
-                <StyledImg src={item.image} alt={item.label} interval={100} />
-                <RightCaro>
-                  <h1>Recipes of the week:</h1>
-                  <h3 style={{}}>{item.label}</h3>
-                </RightCaro>
-              </SliderContainer>
-            </StyledLink>
-          </CarouselItem>
-        )
-      })}
+ 
+      <Carousel controls={true} indicators={false}>
+        {sliderItems.map((item, index) => {
+          return (
+            <CarouselItem
+              key={index}
+              style={{
+                width: "100vw",
+                textAlign: "center",
+                paddingTop: "50px",
+                borderRadius: "2rem",
+              }}
+            >
+              <StyledLink to={"/recipe/" + item.label} state={item}>
+                <SliderContainer>
+                  <StyledImg src={item.image} alt={item.label} interval={100} />
+                  <RightCaro>
+                    <h1>Recipes of the week:</h1>
+                    <h3 style={{}}>{item.label}</h3>
+                  </RightCaro>
+                </SliderContainer>
+              </StyledLink>
+            </CarouselItem>
+          )
+        })}
+      </Carousel>
 
-    </Carousel>
   )
 }
 
 export default CarouselLanding
+
 
 const SliderContainer = styled.div`
   display: flex;
@@ -73,10 +76,9 @@ const StyledImg = styled.img`
     border-radius: 2rem;
   }
 
-  :hover{
+  :hover {
     transform: scale(1.01);
     transition: ease 0.2s;
- 
   }
 `
 

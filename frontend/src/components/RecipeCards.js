@@ -131,8 +131,7 @@ const CardImg = styled.div`
   transition: ease 0.1s;
 
 /*   :hover {
-    border: 2px solid green;
-    transition: 0.2s ease;
+    opacity: 0.9;
   } */
 
   @media (max-width: 600px) {
@@ -151,6 +150,11 @@ const CardImg = styled.div`
     width: 150%;
     height: 100%;
     transform: scale(1.3);
+    transition: ease-in-out 0.2s;
+    :hover {
+      opacity: 0.6;
+      transition: ease-in-out 0.2s;
+    }
 
     @media (max-width: 480px) {
       width: 100%;
@@ -190,6 +194,6 @@ const StyledButton = styled.button`
   background-color: #3e654479;
 
   :hover{
-    background-color:  #3e6544ac;
+    background-color:  #3e6544dd;
   }
 `
