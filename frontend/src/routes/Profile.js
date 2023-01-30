@@ -9,14 +9,13 @@ export default function Profile() {
 
     const {user} = useContext(globalContext);
 
-
   return (
     <FlexWrapper>
       <FlexContainer>
         <img src={profileImg} alt="Profile" />
         <Header>
           <h1>Welcome back,</h1>
-          <h2>{user.firstName}!</h2>
+          <h2>{user.name}!</h2>
         </Header>
       </FlexContainer>
 
