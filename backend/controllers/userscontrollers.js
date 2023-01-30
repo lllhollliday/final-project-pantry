@@ -133,11 +133,35 @@ export const deleteUser = async (req, res, next) => {
 export const addFavoritesItems = async ( req, res, next ) => {
     try {
 
-        const user = await usersCollection.findById(req.body.userId)
-        user.favourites.push(req.body.item)
-        await user.save()
+        console.log('fav hello:', req.body)
+        const user = await usersCollection.findById(req.body.id)
 
-        res.json({success: true, data: user})
+        const idx = user.favourites.findIndex(item => item.label === req.body.item.label)
+
+        let newFavourites = []
+
+        if (idx > -1) { // it is already in the favourites
+
+            newFavourites = user.favourites.filter(item => item.label !== req.body.item.label)
+
+
+        } else {
+
+            user.favourites.push(req.body.item)
+            newFavourites = user.favourites 
+        }
+
+        const newUser = await usersCollection.findByIdAndUpdate(
+            req.body.id,
+            {favourites: newFavourites},
+            {new: true}
+        )
+
+
+        // user.favourites.put(req.body.item)
+        // await user.save()
+            console.log('fav:', newUser)
+        res.json({success: true, favourites: newUser.favourites})
     }
     catch(err) {
         next(err)
