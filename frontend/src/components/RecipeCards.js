@@ -6,7 +6,37 @@ import { globalContext } from "../context/globalContext"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons"
 import { faHeart as regHeart } from "@fortawesome/free-regular-svg-icons"
-import Modal from "react-modal"
+
+
+// adding comment hi 
+
+const like = (
+  <FontAwesomeIcon
+    icon={solidHeart}
+    style={{
+      color: "#ffb803",
+      position: "absolute",
+      top: "6px",
+      right: "5px",
+    }}
+  />
+)
+
+const unlike = (
+  <FontAwesomeIcon
+    icon={regHeart}
+    style={{
+      color: " #ffb803",
+      position: "absolute",
+      top: "6px",
+      right: "5px",
+
+ 
+    }}
+  />
+)
+
+
 
 // home page to render the top random recipes as the first cards
 
