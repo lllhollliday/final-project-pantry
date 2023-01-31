@@ -1,4 +1,4 @@
-import { Outlet, NavLink } from "react-router-dom"
+import { Outlet, NavLink, Navigate } from "react-router-dom"
 
 import styles from "./NavBar.module.css"
 import logo from "../media/logo.png"
@@ -6,7 +6,13 @@ import { useContext } from "react"
 import { globalContext } from "../context/globalContext"
 
 const Navbar = () => {
-  const { user } = useContext(globalContext)
+  const { user, setUser } = useContext(globalContext);
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    setUser(null);
+    Navigate("/");
+  };
 
   return (
     <div>
@@ -33,7 +39,7 @@ const Navbar = () => {
               <NavLink className={styles["button"]} to="/settings">
                 Settings
               </NavLink>{" "}
-              <NavLink className={styles["button"]} to="/">
+              <NavLink className={styles["button"]} to="/" onClick={logout}>
                 Logout
               </NavLink>{" "}
             </>

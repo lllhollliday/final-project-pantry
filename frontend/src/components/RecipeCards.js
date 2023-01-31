@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons"
 import { faHeart as regHeart } from "@fortawesome/free-regular-svg-icons"
 
+
 // adding comment hi 
 
 const like = (
@@ -35,10 +36,20 @@ const unlike = (
   />
 )
 
+
+
 // home page to render the top random recipes as the first cards
 
 export default function RecipeCards() {
   const { recipes, user, setUser } = useContext(globalContext)
+
+  const [modalIsOpen, setModalIsOpen] = useState(false)
+
+  //const handleClose = () => setModalIsOpen(false)
+
+  const toggleModal = () => {
+    setModalIsOpen(!modalIsOpen)
+  }
 
   const handleLike = async (item) => {
     console.log(item)
@@ -81,13 +92,59 @@ export default function RecipeCards() {
                   </CardTitle>
                 </TitleTextWrapper>
               </StyledLink>
-              <StyledButton onClick={() => handleLike(item)}>
+
+              <StyledButton
+                onClick={() => {
+                  if (user) {
+                    handleLike(item)
+                  } else {
+                    toggleModal()
+                  }
+                }}
+              >
                 {user?.favourites?.findIndex(
                   (fav) => fav.label === item.label
                 ) > -1
                   ? like
                   : unlike}
               </StyledButton>
+
+              <Modal
+                style={{
+                  overlay: {
+                    position: "fixed",
+
+                    background: "#ffe8d77f",
+                    opacity: "0.14",
+                  },
+                  content: {
+                    position: "absolute",
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                    width: "15rem",
+                    height: "10rem",
+                    border: "1px solid #ccc",
+
+                    background: "#ffb803",
+                    overflow: "auto",
+                    WebkitOverflowScrolling: "touch",
+                    borderRadius: "10%",
+                    outline: "none",
+                    padding: "30px",
+                  },
+                }}
+                isOpen={modalIsOpen}
+                onRequestClose={toggleModal}
+              >
+                <StyledModalContent>
+                  <button onClick={toggleModal}>x</button>
+                  <h2>
+                    Please <StyledLinkModal to="/login">login</StyledLinkModal>{" "}
+                    to save your favourites.
+                  </h2>
+                </StyledModalContent>
+              </Modal>
             </div>
           )
         })}
@@ -132,7 +189,7 @@ const CardImg = styled.div`
   overflow: hidden;
   transition: ease 0.1s;
 
-/*   :hover {
+  /*   :hover {
     border: 2px solid green;
     transition: 0.2s ease;
   } */
@@ -191,7 +248,79 @@ const StyledButton = styled.button`
   height: 30px;
   background-color: #3e654479;
 
-  :hover{
-    background-color:  #3e6544ac;
+  :hover {
+    background-color: #3e6544ac;
   }
 `
+
+const StyledLinkModal = styled(Link)`
+  font-family: "Roboto", sans-serif;
+  color: #3e6544ce;
+  text-decoration: none;
+
+  &:hover {
+    color: #fff;
+    text-decoration: underline;
+  }
+`
+const StyledModalContent = styled.div`
+  display: "flex";
+  align-content: "center";
+  justify-content: "center";
+  flex-direction: "column";
+  padding: "10px";
+
+  h2 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+    color: #fff;
+    font-size: 19px;
+    margin-top: 23px;
+    margin-left: "8px";
+  }
+
+  button {
+    font-family: "Roboto", sans-serif;
+    width: 23px;
+    height: 23px;
+    font-size: 16px;
+    border: 1px solid transparent;
+    color: white;
+    font-weight: 400;
+
+    background-color: #ffb803;
+    border-radius: 30%;
+
+    position: absolute;
+    top: 9px;
+    right: 14px;
+
+    :hover {
+      border: 1px solid orange;
+    }
+  }
+`
+const like = (
+  <FontAwesomeIcon
+    icon={solidHeart}
+    style={{
+      color: "#ffb803",
+      position: "absolute",
+      top: "6px",
+      right: "5px",
+    }}
+  />
+)
+
+const unlike = (
+  <FontAwesomeIcon
+    icon={regHeart}
+    style={{
+      color: " #ffb803",
+      position: "absolute",
+      top: "6px",
+      right: "5px",
+    }}
+  />
+)

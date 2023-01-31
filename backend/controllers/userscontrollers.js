@@ -24,41 +24,23 @@ export const getSingleUser = async (req, res, next) => {
     }
 };
 
-
 export const createUser = async (req, res, next) => {
-    // try{
-    //     const user = await usersCollection.find(req.body)
-    //     await user.save()
-    //     res.json({success: true, user})
-    // }
-    // catch(err){
-    //     next(err)
-    // }
-    console.log(req.body)
-    bcrypt.hash(req.body.password, 10, function(err, hashedPass){
-        if(err) {
-            res.json({
-                error: err
-            })
-        }
-        let user = new usersCollection ({
+
+    try {
+        const hashedPassword = await bcrypt.hash(req.body.password, 10);
+        const user = new usersCollection({
             name: req.body.name,
             email: req.body.email,
-            password: hashedPass
-        })
-        user.save()
-        // console.log(user.name);
-        .then(user => {
-            res.json({
-                success:true, user
-            })
-        })
-        .catch(error => {
-            res.json({
-                success: false, message: 'An error occured'
-            })
-        })
-    })
+            password: hashedPassword,
+        });
+
+        await user.save();
+
+        res.json({ success: true, user });
+
+    } catch(err){
+        next(err);
+    }
 };
 
 
@@ -106,7 +88,7 @@ export const loginUser = async (req, res, next) => {
 export const updateUser = async (req, res, next) => {
     try{
         const id = req.params.id
-        const updatedUser = await usersCollection.find(id)
+        const updatedUser = await usersCollection.findByIdAndUpdate(id, req.body, {new: true})
         res.json({success: true, user: updatedUser})
     }
     catch(err){
@@ -162,6 +144,20 @@ export const addFavoritesItems = async ( req, res, next ) => {
         // await user.save()
             console.log('fav:', newUser)
         res.json({success: true, favourites: newUser.favourites})
+    }
+    catch(err) {
+        next(err)
+    }
+}
+
+export const addIngredientToMyPantry = async (req, res, next) => {
+    try {
+
+        const user = await usersCollection.findById(req.body.userId)
+        user.pantry.push(req.body.item)
+        await user.save()
+
+        res.json({success: true, data: user})
     }
     catch(err) {
         next(err)
