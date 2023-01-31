@@ -7,6 +7,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons"
 import { faHeart as regHeart } from "@fortawesome/free-regular-svg-icons"
 
+// adding comment hi 
+
 const like = (
   <FontAwesomeIcon
     icon={solidHeart}
