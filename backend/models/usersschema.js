@@ -37,12 +37,14 @@ const userSchema = new mongoose.Schema({
     trim: true,
   },
   //fav array should come here?
-  favourites: [{ 
-    type: Object 
-  }],
-  pantry: [{
-    type: String
-  }]
+  favourites: [
+    { type: Object }
+  ],
+  isAdmin: {
+    type: Boolean,
+    required: true,
+    default: false
+  }
 })
 
 // export default mongoose.model('User', UserSchema)
