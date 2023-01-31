@@ -12,7 +12,7 @@ router.get('/:id', getSingleUser, authenticateToken);
 // Router Post "/users"
 router.post('/register', createUser)
 router.post('/login', loginUser);
-router.post('/favourites', addFavoritesItems)
+router.put('/favourites', addFavoritesItems)
 router.post('/my-pantry', addIngredientToMyPantry)
 
 // Router Patch "/users"
