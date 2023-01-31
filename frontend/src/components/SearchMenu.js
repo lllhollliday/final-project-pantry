@@ -91,6 +91,7 @@ const Wrapper = styled.div`
 `
 
 const SearchWrap = styled.div`
+  font-family: "Roboto", sans-serif;
   display: flex;
   justify-content: center;
   justify-content: space-around;
@@ -111,13 +112,14 @@ const SearchWrap = styled.div`
 
   button {
     width: 4rem;
+    font-size: 14px;
     border-radius: 8px;
     border: 1px solid #3e6544eb;
     background-color: #fff;
     :hover {
       transform: scale(1.01);
 
-      border: 2px solid #3e6544eb;
+      border: 2px solid #ec5f18;
 
       cursor: pointer;
     }
@@ -131,12 +133,18 @@ const DropDowns = styled.div`
 `
 
 const StyledSelect = styled.select`
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  //font-weight: 300;
   border: 1px solid #3e6544eb;
-  padding: 2px;
+  padding: 4px;
   border-radius: 6px;
   width: 10rem;
   background-color: white;
   :focus {
     outline: none;
+  }
+  option {
+    font-family: "Roboto", sans-serif;
   }
 `

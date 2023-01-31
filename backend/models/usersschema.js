@@ -8,11 +8,22 @@ const userSchema = new mongoose.Schema({
     maxlength: 20,
     // trim: true,
   },
-  /* lastName: {
+  lastName: {
     type: String,
-    minlength: 6,
+    minlength: 2,
     trim: true,
-  }, */
+  },
+  firstName: {
+    type: String,
+    minlength: 2,
+  }, 
+  location: {
+    type: String,
+    minlength: 3
+  },
+  birthday: {
+    type: Date
+  },
   email: {
     type: String,
     required: [true, "Please provide email"],
@@ -34,7 +45,6 @@ const userSchema = new mongoose.Schema({
     required: true,
     default: false
   }
-
 })
 
 // export default mongoose.model('User', UserSchema)

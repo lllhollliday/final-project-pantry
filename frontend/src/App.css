@@ -11,17 +11,20 @@
 
  :root {
   /* colors */
-  --light-orange: #fff3d6;
-  --bright-orange: #ffb803;
-  --solid-green: #65a46f; --solid-green: #65a46f5a;
-  --transl-green: #65a46f14;
+  --light-orange: #ffe8d7;
+  --bright-orange: #eadbb500;
+  --solid-green: #65a46f; --solid-green: #65a46f70;
+  --transl-green: #65a46f1e;
   --dark-blue: #011a28;
   --grey: #ede4e3;
   --form-color: #fb8600c0;
   --form-color: #ec5f18;
   --form-color: #fb8600a0;
-  --text-color: #3e6544ce;
-  --text-color2: #3e654479;
+  --text-color: #3e6544;
+  --text-color2:  #3e6544dd;
+/* dont change!: */
+--form-background-orange: #ffb803;
+
 } /* 
 .form {
   width: 35rem;
