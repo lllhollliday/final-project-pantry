@@ -25,7 +25,12 @@ const Login = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user),
     })
-      .then((res) => res.json())
+      .then((res) => {
+        console.log(res.headers.get("token"));
+
+        localStorage.setItem("token", res.headers.get("token"))
+        return res.json()}
+        )
       .then((result) => {
         console.log(result)
         if (result.success) {
