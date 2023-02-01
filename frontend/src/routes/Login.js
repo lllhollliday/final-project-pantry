@@ -30,7 +30,7 @@ const Login = () => {
       .then((result) => {
         console.log(result)
         if (result.success) {
-          toast.success('Successfully signed up!')
+          toast.success('Successfully Logged In!')
           setTimeout(() => {
             isMember ? navigate("/profile") : setIsMember(true)
 
