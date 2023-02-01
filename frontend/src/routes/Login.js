@@ -38,7 +38,7 @@ const Login = () => {
           console.log(result)
           setUser(result.user)
         } else {
-          toast.error('Already a member.');
+          toast.error('Already a member. Email is registered.');
         }
       })
   }
