@@ -8,6 +8,7 @@ import { faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons"
 import { faHeart as regHeart } from "@fortawesome/free-regular-svg-icons"
 import Modal from "react-modal"
 
+
 // home page to render the top random recipes as the first cards
 
 export default function RecipeCards() {
