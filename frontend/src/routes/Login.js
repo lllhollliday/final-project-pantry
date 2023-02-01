@@ -57,11 +57,11 @@ const Login = () => {
         </Headers>
         {/* name input */}
 
-        <FormRow type="text" name="firstName" />
-        <FormRow type="text" name="lastName" />
+        {!isMember && <FormRow type="text" name="firstName" />}
+        {!isMember && <FormRow type="text" name="lastName" />}
 
         {/* email input */}
-        {!isMember && <FormRow type="email" name="email" />}
+        <FormRow type="email" name="email" />
         {/*  password input */}
         <FormRow type="password" name="password" />
         <SubmitButton type="submit">Submit</SubmitButton>
