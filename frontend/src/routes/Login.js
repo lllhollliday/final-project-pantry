@@ -18,7 +18,8 @@ const Login = () => {
     const user = {
       email: e.target.email.value,
       password: e.target.password.value,
-      name: e.target.name.value,
+      firstName: e.target.firstName.value,
+      lastName: e.target.lastName.value
     }
     fetch(`http://localhost:8000/users/${isMember ? "login" : "register"}`, {
       method: "POST",
@@ -56,7 +57,7 @@ const Login = () => {
         </Headers>
         {/* name input */}
 
-        {!isMember && <FormRow type="text" name="name" />}
+        {!isMember && <FormRow type="text" firstName="firstName" /> && <FormRow type="text" lastName="lastName"/>}
 
         {/* email input */}
         <FormRow type="email" name="email" />
