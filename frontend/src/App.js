@@ -9,8 +9,34 @@ import Profile from "./routes/Profile"
 import Favourites from "./routes/Favourites"
 import MyPantry from "./routes/MyPantry"
 import NavBar from "./components/NavBar"
+import { useEffect,useContext } from "react"
+import axios from "axios"
+import { globalContext } from "./context/globalContext"
+
 
 function App() {
+
+  const { setUser } = useContext(globalContext)
+
+
+  useEffect(()=> {
+    //sending token to backend
+    if(localStorage.getItem("token")){
+      const token = localStorage.getItem("token")
+      axios.get("http://localhost:8000/users/verifyToken", {
+        headers: {
+          "authorization": `Bearer ${token}`
+        }
+      })
+      .then((res) => {
+        console.log(res);
+        setUser(res.user)
+      }).catch((err) => {
+        console.log(err)
+      })
+    }
+  }, [ ])
+
   return (
     <div>
       <NavBar />

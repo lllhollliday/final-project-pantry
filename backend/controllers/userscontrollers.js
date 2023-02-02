@@ -164,3 +164,8 @@ export const addIngredientToMyPantry = async (req, res, next) => {
         next(err)
     }
 }
+
+export const verifyToken =  (req, res, next) => {
+    console.log("reached?")
+    res.json({user: req.user, success: true})
+}

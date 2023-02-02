@@ -1,13 +1,14 @@
 import express from "express";
-import { createUser, deleteUser, getAllUsers, getSingleUser, loginUser, updateUser, addFavoritesItems, addIngredientToMyPantry } from "../controllers/userscontrollers.js";
+import { createUser, deleteUser, getAllUsers, getSingleUser, loginUser, updateUser, addFavoritesItems, addIngredientToMyPantry, verifyToken } from "../controllers/userscontrollers.js";
 import authenticateToken from "../middleware/authenticateToken.js";
 import { isAdmin } from "../middleware/isAdmin.js";
 
 const router = express.Router();
 
 // Router Get "/users"
-router.get('/', getAllUsers, isAdmin, authenticateToken);
-router.get('/:id', getSingleUser, authenticateToken);
+router.get('/', authenticateToken, isAdmin, getAllUsers);
+router.get('/verifyToken', authenticateToken, verifyToken);
+router.get('/:id', authenticateToken, getSingleUser );
 
 // Router Post "/users"
 router.post('/register', createUser)

@@ -3,15 +3,16 @@ import usersCollection from '../models/usersschema.js';
 
 async function authenticateToken (req, res, next) {
     try{
-        const {token} = req.headers
+        const token = req.headers.token
         // console.log(token)
         //verify token
         const payload = jwt.verify(token, 'secretKey');
         // console.log(payload);
         const user = await usersCollection.findById(payload._id)
+        console.log(user)
         // attach user to req
         req.user = user;
-        next()
+        next() // moving to the users controller verifyToken function
     }
     catch(err){
         // next(err)
