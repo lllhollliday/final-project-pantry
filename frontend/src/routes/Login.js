@@ -15,18 +15,22 @@ const Login = () => {
 
   const onSubmit = (e) => {
     e.preventDefault()
+    console.log(e.target)
     const user = {
       email: e.target.email.value,
       password: e.target.password.value,
-      firstName: e.target.firstName.value,
-      lastName: e.target.lastName.value
+      firstName: e.target.firstName?.value,
+      lastName: e.target.lastName?.value
     }
     fetch(`http://localhost:8000/users/${isMember ? "login" : "register"}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user),
     })
-      .then((res) => res.json())
+      .then((res) => {
+        localStorage.setItem("token", res.headers.get("token"))
+        return res.json()
+      })
       .then((result) => {
         console.log(result)
         if (result.success) {
