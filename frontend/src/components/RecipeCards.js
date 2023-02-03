@@ -14,6 +14,7 @@ import Modal from "react-modal"
 export default function RecipeCards() {
   const { recipes, user, setUser } = useContext(globalContext)
 
+  console.log("recipes:", recipes);
   const [modalIsOpen, setModalIsOpen] = useState(false)
 
   //const handleClose = () => setModalIsOpen(false)
@@ -23,7 +24,7 @@ export default function RecipeCards() {
   }
 
   const handleLike = async (item) => {
-    console.log(item)
+    console.log("item:", item)
     try {
       const res = await axios.put(`http://localhost:8000/users/favourites`, {
         item,

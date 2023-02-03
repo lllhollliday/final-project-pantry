@@ -9,7 +9,14 @@ import { faHeart as regHeart } from "@fortawesome/free-regular-svg-icons"
 import SearchMenuPantry from "../components/SearchMenuPantry"
 
 export default function Favourites() {
-  const { user, setUser } = useContext(globalContext)
+  const [cuisine, setCuisine] = useState("")
+  const [mealType, setMealType] = useState("")
+  const [health, setHealth] = useState("")
+
+  const [query, setQuery] = useState("")
+
+  const { setRecipes, user, setUser } = useContext(globalContext)
+
   const [favourites, setFavourites] = useState([])
 
   useEffect(() => {
@@ -46,14 +53,50 @@ export default function Favourites() {
     }
   }
 
+  console.log("favs query",query, mealType);
+
+  let filteredIng = favourites.filter((item) => {
+    return item.ingredients.some((element) => {
+      return element.food.includes(query)
+    })
+  })
+   console.log("filtered",filteredIng);
+  
+    const filterMeal = filteredIng.filter((item)=>{return item.mealType[0].includes(mealType)})
+    console.log("fff",filterMeal);
+  
+  
+  
+
+  /*   let filteredMealType = favourites.filter((item) => {
+    return item.mealType.includes(mealType)
+  })
+  
+  let filteredRecipes = filteredIng
+    .filter((item) => filteredMealType.includes(item)) */
+
+  /* 
+  let filteredCuisine = favourites.filter((item) => {
+    return item.cuisine.includes(cuisine)
+  })
+
+
+
+  let filteredHealth = favourites.filter((item) => {
+    return item.health.includes(health)
+  })
+
+  
+ */
   return (
     <Flex>
       <div className="alignLeft">
         <h2>Favourites</h2>
 
-        <SearchMenuPantry />
+        <SearchMenuPantry setQuery={setQuery} setMealType={setMealType}/>
+
         <Wrapper>
-          {favourites.map((item) => {
+          {filterMeal.map((item) => {
             return (
               <div style={{ position: "relative" }}>
                 <StyledLink to={"/recipe/" + item.label} state={item}>
