@@ -4,7 +4,7 @@ import usersCollection from '../models/usersschema.js';
 async function authenticateToken (req, res, next) {
     try{
         const {token} = req.headers
-        // console.log(token)
+        console.log(token)
         //verify token
         const payload = jwt.verify(token, 'secretKey');
         // console.log(payload);

@@ -36,7 +36,7 @@ const userSchema = new mongoose.Schema({
     minlength: 6,
     trim: true,
   },
-  //fav array should come here?
+
   favourites: [
     { type: Object }
   ],
