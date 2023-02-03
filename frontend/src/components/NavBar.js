@@ -4,18 +4,27 @@ import styles from "./NavBar.module.css"
 import logo from "../media/logo.png"
 import { useContext } from "react"
 import { globalContext } from "../context/globalContext"
+import toast, {Toaster} from "react-hot-toast";
 
 const Navbar = () => {
   const { user, setUser } = useContext(globalContext);
+  
 
   const logout = () => {
     localStorage.removeItem("token");
     setUser(null);
-    Navigate("/");
+    if(!user) {
+      // toast("Logged out!", {type: "success"});
+      toast.success("Logged out");
+      setTimeout(() => {
+        Navigate("/");
+      }, 2000);
+    }
   };
 
   return (
     <div>
+      <Toaster position="top-center" />
       <Outlet />
       <nav className={styles["navbar"]}>
         <ul className={styles["navbarLogo"]}>

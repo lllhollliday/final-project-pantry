@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 import FormRow from "../components/FormRow"
 import { globalContext } from "../context/globalContext"
+import toast, {Toaster} from "react-hot-toast";
 
 const Login = () => {
   const [isMember, setIsMember] = useState(false)
@@ -34,9 +35,15 @@ const Login = () => {
       .then((result) => {
         console.log(result)
         if (result.success) {
+          toast.success('Successfully Logged In!')
+          setTimeout(() => {
+            isMember ? navigate("/profile") : setIsMember(true)
+
+          }, 2000)
           console.log(result)
           setUser(result.user)
-          isMember ? navigate("/profile") : setIsMember(true)
+        } else {
+          toast.error('Already a member. Email is registered.');
         }
       })
   }
@@ -70,6 +77,7 @@ const Login = () => {
         <FormRow type="password" name="password" />
         <SubmitButton type="submit">Submit</SubmitButton>
       </form>
+    <Toaster position="top-center" />  
     </Wrapper>
   )
 }
