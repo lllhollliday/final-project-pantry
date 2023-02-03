@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 import FormRow from "../components/FormRow"
 import { globalContext } from "../context/globalContext"
+import toast, {Toaster} from "react-hot-toast";
 
 const Login = () => {
   const [isMember, setIsMember] = useState(false)
@@ -15,10 +16,12 @@ const Login = () => {
 
   const onSubmit = (e) => {
     e.preventDefault()
+    console.log(e.target)
     const user = {
       email: e.target.email.value,
       password: e.target.password.value,
-      name: e.target.name.value,
+      firstName: e.target.firstName?.value,
+      lastName: e.target.lastName?.value
     }
     fetch(`http://localhost:8000/users/${isMember ? "login" : "register"}`, {
       method: "POST",
@@ -26,17 +29,21 @@ const Login = () => {
       body: JSON.stringify(user),
     })
       .then((res) => {
-        console.log(res.headers.get("token"));
-
         localStorage.setItem("token", res.headers.get("token"))
-        return res.json()}
-        )
+        return res.json()
+      })
       .then((result) => {
         console.log(result)
         if (result.success) {
+          toast.success('Successfully Logged In!')
+          setTimeout(() => {
+            isMember ? navigate("/profile") : setIsMember(true)
+
+          }, 2000)
           console.log(result)
           setUser(result.user)
-          isMember ? navigate("/profile") : setIsMember(true)
+        } else {
+          toast.error('Already a member. Email is registered.');
         }
       })
   }
@@ -61,7 +68,8 @@ const Login = () => {
         </Headers>
         {/* name input */}
 
-        {!isMember && <FormRow type="text" name="name" />}
+        {!isMember && <FormRow type="text" name="first Name" />}
+        {!isMember && <FormRow type="text" name="last Name" />}
 
         {/* email input */}
         <FormRow type="email" name="email" />
@@ -69,6 +77,7 @@ const Login = () => {
         <FormRow type="password" name="password" />
         <SubmitButton type="submit">Submit</SubmitButton>
       </form>
+    <Toaster position="top-center" />  
     </Wrapper>
   )
 }

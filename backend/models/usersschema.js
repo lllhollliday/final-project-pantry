@@ -1,22 +1,20 @@
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
-  name: {
+  firstName: {
     type: String,
-    required: [true, "Please provide name"],
-    minlength: 3,
+    required: [true, "Please provide first name"],
+    minlength: 2,
     maxlength: 20,
-    // trim: true,
+    trim: true,
   },
   lastName: {
     type: String,
+    required: [true, "Please provide last name"],
     minlength: 2,
+    maxlength:20,
     trim: true,
   },
-  firstName: {
-    type: String,
-    minlength: 2,
-  }, 
   location: {
     type: String,
     minlength: 3

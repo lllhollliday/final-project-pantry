@@ -11,11 +11,11 @@ export default function Profile() {
 
   return (
     <FlexWrapper>
-      <FlexContainer>
+      {user && <> <FlexContainer>
         <img src={profileImg} alt="Profile" />
         <Header>
           <h1>Welcome back,</h1>
-          <h2>{user.name}!</h2>
+          <h2>{user.firstName}!</h2>
         </Header>
       </FlexContainer>
 
@@ -25,6 +25,8 @@ export default function Profile() {
         <Line></Line>
       </Links>
       <RecipeCards />
+      </>
+    }
     </FlexWrapper>
   )
 }

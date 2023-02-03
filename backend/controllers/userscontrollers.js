@@ -23,15 +23,24 @@ export const getSingleUser = async (req, res, next) => {
 }
 
 export const createUser = async (req, res, next) => {
-  try {
-    const hashedPassword = await bcrypt.hash(req.body.password, 10)
-    const user = new usersCollection({
-      name: req.body.name,
-      email: req.body.email,
-      password: hashedPassword,
-    })
+ 
+    try {
+        const hashedPassword = await bcrypt.hash(req.body.password, 10);
+        const user = new usersCollection({
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            email: req.body.email,
+            password: hashedPassword,
+        });
 
-    await user.save()
+        await user.save();
+
+        res.json({ success: true, user });
+
+    } catch(err){
+        next(err);
+    }
+};
 
     res.json({ success: true, user })
   } catch (err) {
@@ -162,12 +171,20 @@ export const getFavourites = async (req, res, next) => {
 
 export const addIngredientToMyPantry = async (req, res, next) => {
   try {
-    const user = await usersCollection.findById(req.body.userId)
-    user.pantry.push(req.body.item)
-    await user.save()
+  
+        const user = await usersCollection.findById(req.body.userId)
+        user.pantry.push(req.body.item)
+        await user.save()
 
-    res.json({ success: true, data: user })
-  } catch (err) {
-    next(err)
-  }
+        res.json({success: true, data: user})
+    }
+    catch(err) {
+        next(err)
+    }
 }
+
+export const verifyToken =  (req, res, next) => {
+    console.log("reached?")
+    res.json({user: req.user, success: true})
+}
+
