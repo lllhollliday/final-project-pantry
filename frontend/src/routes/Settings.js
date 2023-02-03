@@ -2,7 +2,7 @@ import React from "react";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { globalContext } from "../context/globalContext";
-import toast from "react-hot-toast";
+import toast, {Toaster} from "react-hot-toast";
 
 export default function EditSettings() {
   const{user, setUser} = useContext(globalContext);
@@ -36,6 +36,7 @@ export default function EditSettings() {
   return (
     
     <div>
+      <Toaster />
       <h1>Settings</h1>
       
       <div>
