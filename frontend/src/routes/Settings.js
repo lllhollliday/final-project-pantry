@@ -46,18 +46,18 @@ export default function EditSettings() {
         <form onSubmit = {SettingsUpdateRequest} >
           <label>
             First Name* :{" "}
-            <input type="text" name="firstName" defaultValue={user.firstName} />
+            <input type="text" name="firstName" defaultValue={user?.firstName} />
             {" "}  
           </label>
           <br/>
           <label>
             Last Name* :{" "}
-            <input type="text" name="lastName" defaultValue={user.lastName}/>
+            <input type="text" name="lastName" defaultValue={user?.lastName}/>
           </label>
          <br/>
          <label>
           City, State, County (optional)
-          <input type="text" name="location" defaultValue={user.location}/>
+          <input type="text" name="location" defaultValue={user?.location}/>
          </label>
         
         <h2>Edit Settings</h2>
