@@ -18,8 +18,13 @@ function SearchMenu() {
     )
       .then((res) => res.json())
       .then((result) => {
-        console.log(result.recipes)
-        setRecipes(result.recipes)
+        console.log("data from recipes", result.recipes)
+        const newRecipe = result.recipes.map((recipe) => {
+          recipe.subCatagory = [cuisine, mealType, health]
+          return recipe
+        })
+        console.log("New Recipe:", newRecipe)
+        setRecipes(newRecipe)
       })
   }
 
@@ -40,8 +45,6 @@ function SearchMenu() {
             name="cuisineType"
             onChange={(e) => setCuisine(e.target.value)}
           >
-
-
             <option value="">cuisine</option>
             <option value="italian">italian</option>
             <option value="french">french</option>

@@ -1,25 +1,27 @@
-import express from "express";
-import morgan from "morgan";
-import dotenv from "dotenv";
-import axios from "axios";
+import express from "express"
+import morgan from "morgan"
+import dotenv from "dotenv"
+import axios from "axios"
 import cors from "cors"
-import recipesRoute from './routes/recipesroute.js';
-import usersRoute from './routes/usersroute.js';
-import imagesRoute from './routes/imagesroute.js';
-import fileupload from 'express-fileupload';
+import recipesRoute from "./routes/recipesroute.js"
+import usersRoute from "./routes/usersroute.js"
+import imagesRoute from "./routes/imagesroute.js"
+import fileupload from "express-fileupload"
 dotenv.config()
 
 // Connecting to database / authenticate user
 import connectDB from "./db/connect.js"
-connectDB(`mongodb+srv://finalproject:Dci1234!@final-project-pantry.guvtnoz.mongodb.net/?retryWrites=true&w=majority`)
+connectDB(
+  `mongodb+srv://finalproject:Dci1234!@final-project-pantry.guvtnoz.mongodb.net/?retryWrites=true&w=majority`
+)
 // Middleware error handling
 import errorHandlerMiddleware from "./middleware/errorHandler.js"
 import notFoundMiddleware from "./middleware/notFound.js"
 
 const app = express()
-app.use(fileupload());
+app.use(fileupload())
 
-app.use(cors({origin:"http://localhost:3000", exposedHeaders: ["token"]}))
+app.use(cors({ origin: "http://localhost:3000", exposedHeaders: ["token"] }))
 
 // app.get('/', )
 
@@ -49,16 +51,16 @@ app.use(morgan("dev"))
 // })
 
 // Routes
-app.use("/recipes", recipesRoute);
-app.use("/users", usersRoute);
+app.use("/recipes", recipesRoute)
+app.use("/users", usersRoute)
 app.use("/images", imagesRoute)
-  //error handling
+//error handling
 app.use((req, res, next) => {
-  res.sendFile("./views/pageNotFound.html", {root: "."})
+  res.sendFile("./views/pageNotFound.html", { root: "." })
 })
-  // universal error handler
+// universal error handler
 app.use((err, req, res, next) => {
-  res.json({success: false, message: err})
+  res.json({ success: false, message: err })
 })
 
-app.listen(PORT, () => console.log('server running on port:', PORT))
+app.listen(PORT, () => console.log("server running on port:", PORT))

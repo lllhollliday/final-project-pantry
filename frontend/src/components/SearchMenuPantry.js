@@ -1,45 +1,28 @@
-import { useContext, useState } from "react"
-import { globalContext } from "../context/globalContext"
+
 import styled from "styled-components"
 
-function SearchMenu() {
-  const [cuisine, setCuisine] = useState("")
-  const [mealType, setMealType] = useState("")
-  const [health, setHealth] = useState("")
+function SearchMenu({ setQuery,  setMealType }) {
+  // const fetchRecipe = (e) => {
+  //   e.preventDefault()
+  //   setQuery(e.target.query.value)
 
-  const { setRecipes } = useContext(globalContext)
+  //   console.log(e.target.query.value)
+  // }
 
-  const fetchRecipe = (e) => {
-    e.preventDefault()
-
-console.log(e.target.query);
-
-    fetch(
-      `http://localhost:8000/users/favourites?q=${e.target.query.value}&cuisineType=${cuisine}&mealType=${mealType}&health=${health}`
-
-    )
-     
-      .then((res) => res.json())
-      .then((result) => {
-        console.log(result.recipes)
-        setRecipes(result.recipes)
-      }) 
-  }
 
   return (
     <div>
-      <form onSubmit={fetchRecipe}>
+      <form >
         <SearchWrap>
           <input
             name="query"
             type="text"
             placeholder="search your favourites"
+            onChange={(e)=>setQuery(e.target.value)}
           />
-       
-
         </SearchWrap>
         <DropDowns>
-          <StyledSelect
+{/*           <StyledSelect
             name="cuisineType"
             onChange={(e) => setCuisine(e.target.value)}
           >
@@ -47,17 +30,18 @@ console.log(e.target.query);
             <option value="italian">italian</option>
             <option value="french">french</option>
             <option value="chinese">chinese</option>
-          </StyledSelect>
+          </StyledSelect> */}
           <StyledSelect
             name="mealType"
             onChange={(e) => setMealType(e.target.value)}
           >
             <option value="">meal type</option>
             <option value="breakfast">breakfast</option>
+            <option value="brunch">brunch</option>
             <option value="lunch">lunch</option>
             <option value="dinner">dinner</option>
           </StyledSelect>
-          <StyledSelect
+       {/*    <StyledSelect
             name="health"
             onChange={(e) => setHealth(e.target.value)}
           >
@@ -65,9 +49,9 @@ console.log(e.target.query);
             <option value="alcohol-free">alc free</option>
             <option value="dairy-free">Dairy-free</option>
             <option value="pork-free">Pork-free</option>{" "}
-          </StyledSelect>
+          </StyledSelect> */}
         </DropDowns>
-        <SortByWrap>
+      {/*   <SortByWrap>
           <p>SORT BY:</p>
           <select
             className="select"
@@ -77,7 +61,8 @@ console.log(e.target.query);
             <option value="">date added</option>
             <option value="alcohol-free">A-Z</option>
           </select>
-        </SortByWrap>
+        </SortByWrap> */}
+
       </form>
     </div>
   )
@@ -94,7 +79,7 @@ const SearchWrap = styled.div`
     width: 28.5rem;
     padding: 4px 0px 4px 8px;
     border: 1px solid #3e6544eb;
-    font-size: 15px;
+    font-size: 12px;
   }
   input:focus {
     background-color: #fff;
@@ -102,20 +87,7 @@ const SearchWrap = styled.div`
     border: 2.5px solid #ec5f18;
   }
 
-  button {
-    width: 4rem;
-    font-size: 14px;
-    border-radius: 8px;
-    border: 1px solid #3e6544eb;
-    background-color: #fff;
-    :hover {
-      transform: scale(1.01);
-
-      border: 2px solid #ec5f18;
-
-      cursor: pointer;
-    }
-  }
+ 
 `
 
 const DropDowns = styled.div`
@@ -128,7 +100,7 @@ const DropDowns = styled.div`
 const StyledSelect = styled.select`
   //color: red;
   font-family: "Roboto", sans-serif;
-  font-size: 14px;
+  font-size: 12px;
   //font-weight: 300;
   border: 1px solid #3e6544eb;
   padding: 4px;
@@ -157,8 +129,8 @@ const SortByWrap = styled.div`
 
   select {
     font-family: "Roboto", sans-serif;
-    font-size: 14px;
-    height: 1.9rem;
+    font-size: 12px;
+    height: 1.7rem;
     border: 1px solid #3e6544eb;
     padding: 4px;
     border-radius: 6px;
