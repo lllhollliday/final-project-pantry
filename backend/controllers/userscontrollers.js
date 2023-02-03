@@ -29,7 +29,8 @@ export const createUser = async (req, res, next) => {
     try {
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
         const user = new usersCollection({
-            name: req.body.name,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
             email: req.body.email,
             password: hashedPassword,
         });
@@ -162,4 +163,9 @@ export const addIngredientToMyPantry = async (req, res, next) => {
     catch(err) {
         next(err)
     }
+}
+
+export const verifyToken =  (req, res, next) => {
+    console.log("reached?")
+    res.json({user: req.user, success: true})
 }

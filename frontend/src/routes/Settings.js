@@ -36,7 +36,9 @@ export default function EditSettings() {
   return (
     
     <div>
+    
       <Toaster position="top-center" />
+
       <h1>Settings</h1>
       
       <div>

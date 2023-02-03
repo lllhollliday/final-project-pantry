@@ -16,10 +16,12 @@ const Login = () => {
 
   const onSubmit = (e) => {
     e.preventDefault()
+    console.log(e.target)
     const user = {
       email: e.target.email.value,
       password: e.target.password.value,
-      name: e.target.name.value,
+      firstName: e.target.firstName?.value,
+      lastName: e.target.lastName?.value
     }
     fetch(`http://localhost:8000/users/${isMember ? "login" : "register"}`, {
       method: "POST",
@@ -27,11 +29,9 @@ const Login = () => {
       body: JSON.stringify(user),
     })
       .then((res) => {
-        console.log(res.headers.get("token"));
-
         localStorage.setItem("token", res.headers.get("token"))
-        return res.json()}
-        )
+        return res.json()
+      })
       .then((result) => {
         console.log(result)
         if (result.success) {
@@ -68,7 +68,8 @@ const Login = () => {
         </Headers>
         {/* name input */}
 
-        {!isMember && <FormRow type="text" name="name" />}
+        {!isMember && <FormRow type="text" name="first Name" />}
+        {!isMember && <FormRow type="text" name="last Name" />}
 
         {/* email input */}
         <FormRow type="email" name="email" />

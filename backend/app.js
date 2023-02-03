@@ -19,7 +19,7 @@ import notFoundMiddleware from "./middleware/notFound.js"
 const app = express()
 app.use(fileupload());
 
-app.use(cors({origin:"http://localhost:3000"}))
+app.use(cors({origin:"http://localhost:3000", exposedHeaders: ["token"]}))
 
 // app.get('/', )
 
