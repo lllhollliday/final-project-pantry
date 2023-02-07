@@ -9,7 +9,6 @@ import {
   addFavoritesItems,
   addIngredientToMyPantry,
   getFavourites,
-  verifyToken
 } from "../controllers/userscontrollers.js"
 import authenticateToken from "../middleware/authenticateToken.js"
 import { isAdmin } from "../middleware/isAdmin.js"
@@ -17,10 +16,9 @@ import { isAdmin } from "../middleware/isAdmin.js"
 const router = express.Router()
 
 // Router Get "/users"
-router.get('/', authenticateToken, isAdmin, getAllUsers);
-router.get("/favourites", authenticateToken, getFavourites);
-router.get('/verifyToken', authenticateToken, verifyToken);
-router.get("/:id", authenticateToken, getSingleUser);
+router.get("/", getAllUsers, isAdmin, authenticateToken)
+router.get("/favourites", authenticateToken, getFavourites)
+router.get("/:id", authenticateToken, getSingleUser)
 
 // Router Post "/users"
 router.post("/register", createUser)
