@@ -68,13 +68,13 @@ const Login = () => {
         </Headers>
         {/* name input */}
 
-        {!isMember && <FormRow type="text" name="first Name" />}
-        {!isMember && <FormRow type="text" name="last Name" />}
+        {!isMember && <FormRow type="text" name="firstName" title={"First Name"} />}
+        {!isMember && <FormRow type="text" name="lastName" title={"Last Name"}/>}
 
         {/* email input */}
-        <FormRow type="email" name="email" />
+        <FormRow type="email" name="email" title={"Email"}/>
         {/*  password input */}
-        <FormRow type="password" name="password" />
+        <FormRow type="password" name="password" title={"Password"}/>
         <SubmitButton type="submit">Submit</SubmitButton>
       </form>
     <Toaster position="top-center" />  
