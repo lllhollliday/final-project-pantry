@@ -42,11 +42,7 @@ export const createUser = async (req, res, next) => {
     }
 };
 
-    res.json({ success: true, user })
-  } catch (err) {
-    next(err)
-  }
-}
+
 
 export const loginUser = async (req, res, next) => {
   let email = req.body.email
