@@ -1,15 +1,42 @@
 import { useLocation } from "react-router-dom"
+import axios from "axios"
+import {useContext} from "react"
+import { globalContext } from "../context/globalContext"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons"
+import { faHeart as regHeart } from "@fortawesome/free-regular-svg-icons"
 import styled from "styled-components"
 
 function Recipe() {
   const { state } = useLocation()
+  const {  user, setUser } = useContext(globalContext)
+
+  const handleLike = async (item) => {
+    console.log("item:", item)
+    try {
+      const res = await axios.put(`http://localhost:8000/users/favourites`, {
+        state,
+        id: user._id,
+      })
+      // setFavourite([...favourites, item])
+
+      setUser({
+        ...user,
+        favourites: res.data.favourites,
+      })
+
+      console.log(res)
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
   console.log(state)
   return (
     <FlexWrapper>
       {state && (
         <div>
-          <HeadWrap>
+          <HeadWrap style={{position:"relative"}}>
             {" "}
             <img src={state.image} alt="" />
             <div>
@@ -21,7 +48,27 @@ function Recipe() {
               </p>
               {/* <p>Diet: *need to fix* {state.health}</p>{" "} */}
             </div>
+
+                     <StyledButton
+                onClick={() => {
+                  if (user) {
+                    handleLike(state)
+                  } else {
+                   console.log("Not logged in");
+                  }
+                }}
+              >
+                {user?.favourites?.findIndex(
+                  (fav) => fav.label === state.label
+                ) > -1
+                  ? like
+                  : unlike}
+              </StyledButton>
+
           </HeadWrap>
+
+ 
+
           <Line />
           {/*   <IngWrap> */}
           <h2>Ingredients </h2>
@@ -62,6 +109,7 @@ function Recipe() {
 export default Recipe
 
 const FlexWrapper = styled.div`
+//position: relative;
   margin-top: 4rem;
   display: flex;
   justify-content: center;
@@ -79,12 +127,14 @@ const HeadWrap = styled.div`
     width: 23rem;
     height: auto;
     border-radius: 15px;
+    position: relative;
   }
   h1,
   p {
     width: 17rem;
     margin-left: 2rem;
     font-weight: 500;
+    
   }
 `
 
@@ -124,3 +174,41 @@ const Quantity = styled.div`
 const Ing = styled.div`
   margin-left: 5rem;
 `
+const StyledButton = styled.button`
+  position: absolute;
+  top: 20rem;
+  right: 20rem;
+  border: 1px solid green;
+  border-radius: 40%;
+  width: 28px;
+  height: 30px;
+  background-color: #3e654479;
+
+  :hover {
+    background-color: #3e6544ac;
+  }
+`
+
+const like = (
+  <FontAwesomeIcon
+    icon={solidHeart}
+    style={{
+      color: "#ffb803",
+      position: "absolute",
+      top: "6px",
+      right: "5px",
+    }}
+  />
+)
+
+const unlike = (
+  <FontAwesomeIcon
+    icon={regHeart}
+    style={{
+      color: " #ffb803",
+      position: "absolute",
+      top: "6px",
+      right: "5px",
+    }}
+  />
+)
