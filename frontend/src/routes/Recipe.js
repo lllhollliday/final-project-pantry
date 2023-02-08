@@ -50,6 +50,9 @@ function Recipe() {
             </Ing>
           </InlineWrap>
           {/*      </IngWrap> */}
+
+          <h2>Instructions</h2>
+          <p>Click here to see recipe</p>
         </div>
       )}
     </FlexWrapper>
@@ -64,6 +67,7 @@ const FlexWrapper = styled.div`
   justify-content: center;
   h2 {
     font-weight: 500;
+    font-size: 24px;
     margin-top: 2rem;
     margin-bottom: 0.5rem;
   }
@@ -106,9 +110,11 @@ const Line = styled.div`
  */
 const InlineWrap = styled.div`
   display: inline-flex;
+  margin-top: 2rem;
 
   li {
     list-style-type: none;
+    font-size: 12px;
   }
 `
 
@@ -116,5 +122,5 @@ const Quantity = styled.div`
   font-weight: 500;
 `
 const Ing = styled.div`
-  margin-left: 6rem;
+  margin-left: 5rem;
 `

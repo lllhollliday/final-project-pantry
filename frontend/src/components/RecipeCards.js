@@ -128,19 +128,19 @@ export default function RecipeCards() {
 const FlexWrap = styled.div`
   display: flex;
   justify-content: center;
-  width: 100vw;
+ // width: 100vw;
 `
 
 const Wrapper = styled.div`
   justify-items: center;
-  width: 50vw;
+  width: 45rem;
   margin: 4rem 0rem;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-column-gap: 20px;
   grid-row-gap: 5rem;
 
-  @media (max-width: 480px) {
+  @media (max-width: 481px) {
     width: 90vw;
     display: flex;
     flex-direction: column;

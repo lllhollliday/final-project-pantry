@@ -38,33 +38,36 @@ export default function MyPantry() {
   console.log("selected:", selectedIng)
   return (
     <Wrapper>
-      <SidePantry>
+      <div>
+        {" "}
         <h1>My Pantry</h1>
-        <form onSubmit={addToPantry}>
-          <input
-            type="text"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            placeholder="add to your pantry"
-          />
-        </form>
-        <ul>
-          {ingredient.map((ingredient, index) => (
-            <li
-              key={index}
-              className={selectedIng.includes(ingredient) ? "selected" : ""}
-              onClick={() => handleClick(ingredient)}
-            >
-              {ingredient}
-              {selectedIng.includes(ingredient) ? (
-                <button onClick={() => handleRemove(ingredient)}>x</button>
-              ) : (
-                ""
-              )}
-            </li>
-          ))}
-        </ul>
-      </SidePantry>
+        <LeftBlock>
+          <form onSubmit={addToPantry}>
+            <input
+              type="text"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              placeholder="add to your pantry"
+            />
+          </form>
+          <ul>
+            {ingredient.map((ingredient, index) => (
+              <li
+                key={index}
+                className={selectedIng.includes(ingredient) ? "selected" : ""}
+                onClick={() => handleClick(ingredient)}
+              >
+                {ingredient}
+                {selectedIng.includes(ingredient) ? (
+                  <button onClick={() => handleRemove(ingredient)}>x</button>
+                ) : (
+                  ""
+                )}
+              </li>
+            ))}
+          </ul>
+        </LeftBlock>{" "}
+      </div>
 
       <RightBlock>
         <div>
@@ -74,7 +77,6 @@ export default function MyPantry() {
             <SearchPantry selectedIng={selectedIng} />
             <RecipeCards />
           </ResponsiveWrap>
-
         </div>
       </RightBlock>
     </Wrapper>
@@ -86,42 +88,78 @@ const Wrapper = styled.div`
   margin: 0 auto;
   margin-top: 3rem;
   justify-content: center;
-  width: 90vw;
-
+  width: 100vw;
+  h1 {
+    color:#3e6544ce;
+    font-size: 30px;
+    font-weight: 500;
+  }
   @media (max-width: 600px) {
     flex-direction: column;
   }
 `
-const SidePantry = styled.div`
-  border: 1px solid red;
-  border-radius: 15px;
-  padding: 1rem;
-  width: 40vw;
-  h1 {
-    font-size: 28px;
-    font-weight: 500;
+const LeftBlock = styled.div`
+  margin-top: 2rem;
+  padding-right: 1rem;
+  height: 100%;
+  border-right: 2px solid #3e6544ce;
+  border-radius: 2px;
+  //padding: 1rem;
+  width: 20vw;
+  ul{
+    margin-left: -2rem;
   }
+
   li {
+  margin-right: 5px;
     display: inline-block;
     flex-wrap: wrap;
     border: solid 1px green;
-    border-radius: 20px;
+    border-radius: 15px;
     cursor: pointer;
-    padding: 2px 9px 2px 9px;
-    margin: 2px 4px 2px 4px;
+    padding: 4px 12px;
+    margin-top: 1rem;
+    font-size: 14px;
+    font-family: "Roboto", sans-serif;
+    position: relative;
+  
   }
   li.selected {
-    background-color: aliceblue;
+    //background-color: aliceblue;
+    padding:6px 16px;
+    border: 1px solid #ffb803;
   }
 
   input {
     font-family: "Roboto", sans-serif;
-    font-size: 13px;
+    font-size: 14px;
     margin-top: 7px;
-    width: 13rem;
+    width: 90%;
     padding: 4px 6px;
     border-radius: 10px;
-    border: 1px solid #fff3d6;
+    border: 1px solid #ffb803;
+  }
+  input:focus {
+    background-color: #fff;
+    outline: #65a46f50;
+    border: 2px solid #ffb803;
+  }
+
+  button{
+    //margin-right: 6px;
+    position: absolute;
+    //top: 0;
+    right: 8px;
+    bottom: 18px;
+    background-color: transparent;
+    border: none;
+    font-size: 10px;
+
+
+
+  }
+  button:hover{
+    color: #ec5f18;
   }
 
   @media (max-width: 600px) {
@@ -137,13 +175,18 @@ const SidePantry = styled.div`
 `
 
 const RightBlock = styled.div`
-  border: 1px solid orange;
+
+  border: 2px solid #ffb803;
   border-radius: 10px;
-  width: 65vw;
-  margin-left: 2rem;
+  width: 60vw;
+  margin-left:5rem;
+  margin-top: 4rem;
   padding: 1rem;
   h2 {
-    font-weight: 500;
+   //margin-left: 5rem;
+    font-weight: 400;
+    font-size: 18px;
+    font-family: "Roboto", sans-serif;
   }
 
   @media (max-width: 600px) {
@@ -158,6 +201,4 @@ const ResponsiveWrap = styled.div`
   align-items: center;
   justify-content: center;
   margin: auto 0;
-  
-
 `

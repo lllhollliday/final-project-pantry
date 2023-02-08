@@ -68,16 +68,20 @@ function SearchPantry({ selectedIng }) {
 export default SearchPantry
 
 const Wrapper = styled.div`
-  margin-top: 5rem;
+  font-family: "Roboto", sans-serif;
+  margin-top: 3rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 60vw;
+  width: 60rem;
 `
 const DropDowns = styled.div`
-  width: 60vw;
+  font-family: "Roboto", sans-serif;
+  width: 45rem;
   display: flex;
   justify-content: space-between;
+  font-size: 15px;
+  margin-top: 2rem;
 `
 
 const StyledSelect = styled.select`
