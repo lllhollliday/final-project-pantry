@@ -1,5 +1,6 @@
 import express from "express"
 import morgan from "morgan"
+import mongoose from "mongoose"
 import dotenv from "dotenv"
 import axios from "axios"
 import cors from "cors"
@@ -10,10 +11,15 @@ import fileupload from "express-fileupload"
 dotenv.config()
 
 // Connecting to database / authenticate user
-import connectDB from "./db/connect.js"
-connectDB(
-  `mongodb+srv://finalproject:Dci1234!@final-project-pantry.guvtnoz.mongodb.net/?retryWrites=true&w=majority`
-)
+// import connectDB from "./db/connect.js"
+// connectDB(
+//   `mongodb+srv://finalproject:Dci1234!@final-project-pantry.guvtnoz.mongodb.net/?retryWrites=true&w=majority`
+// )
+
+mongoose.connect(process.env.MONGO_URI, () => {
+  console.log("connection established")
+});
+
 // Middleware error handling
 import errorHandlerMiddleware from "./middleware/errorHandler.js"
 import notFoundMiddleware from "./middleware/notFound.js"
