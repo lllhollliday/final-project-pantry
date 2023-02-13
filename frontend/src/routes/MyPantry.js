@@ -178,8 +178,9 @@ const RightBlock = styled.div`
 
   border: 2px solid #ffb803;
   border-radius: 10px;
-  width: 60vw;
-  margin-left:5rem;
+  width: 65vw;
+
+ margin-left:5rem;
   margin-top: 4rem;
   padding: 1rem;
   h2 {
@@ -199,6 +200,7 @@ const ResponsiveWrap = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  margin: auto 0;
+
+
+
 `

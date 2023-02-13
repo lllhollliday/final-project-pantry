@@ -33,6 +33,7 @@ export default function Favourites() {
     fetchData()
   }, [])
 
+
   const handleLike = async (item) => {
     console.log(item)
     try {
