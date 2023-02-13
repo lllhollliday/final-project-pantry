@@ -88,7 +88,7 @@ const Wrapper = styled.div`
   margin: 0 auto;
   margin-top: 3rem;
   justify-content: center;
-  width: 100vw;
+  width: 85vw;
   h1 {
     color:#3e6544ce;
     font-size: 30px;
@@ -178,8 +178,9 @@ const RightBlock = styled.div`
 
   border: 2px solid #ffb803;
   border-radius: 10px;
-  width: 60vw;
-  margin-left:5rem;
+ // width: 65vw;
+
+ margin-left:5rem;
   margin-top: 4rem;
   padding: 1rem;
   h2 {
@@ -199,6 +200,7 @@ const ResponsiveWrap = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  margin: auto 0;
+//padding-right: 1rem;
+
+
 `

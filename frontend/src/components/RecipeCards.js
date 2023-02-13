@@ -142,7 +142,7 @@ const Wrapper = styled.div`
   grid-row-gap: 5rem;
 
   @media (max-width: 481px) {
-    width: 90vw;
+   // width: 90vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -182,11 +182,16 @@ const CardImg = styled.div`
     //object-position: 10px;
     width: 150%;
     height: 100%;
-    transform: scale(1.3);
+    transform: scale(1.2);
+
+    :hover{
+      opacity: 0.6;
+      transition: 0.2s;
+    }
 
     @media (max-width: 480px) {
       width: 100%;
-      transform: scale(1.58);
+      transform: scale(1.5);
     }
   }
 `

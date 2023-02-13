@@ -21,6 +21,7 @@ const CarouselLanding = () => {
               textAlign: "center",
               paddingTop: "50px",
               borderRadius: "2rem",
+              marginBottom:"4rem",
             }}
           >
             <StyledLink to={"/recipe/" + item.label} state={item}>
@@ -49,21 +50,24 @@ const SliderContainer = styled.div`
 `
 
 const StyledImg = styled.img`
-  width: 35vw;
-  height: 400px;
+
+width: 30rem;
+    height: 25rem;
+
+  
   border-radius: 2rem;
   object-fit: cover;
   transition: ease 0.2s;
 
-  @media (max-width: 1800px) {
-    width: 30%;
-    height: auto;
+/*   @media (max-width: 1800px) {
+    width: 30rem;
+    height: 25rem;
     border-radius: 2rem;
-  }
+  } */
 
   @media (max-width: 992px) {
-    width: 40%;
-    height: auto;
+    width: 20rem;
+    height: 15rem;
     border-radius: 2rem;
   }
 
@@ -101,4 +105,3 @@ const StyledLink = styled(Link)`
     color: #3e654479;
   }
 `
-// HELLO
