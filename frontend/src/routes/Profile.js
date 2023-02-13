@@ -99,8 +99,8 @@ letter-spacing: 0.4px;
 
 const Line = styled.div`
   border-bottom: 1px solid grey;
-  width: 150%;
-  margin-left: -3.9rem;
+  width: 130%;
+  margin-left: -2.1rem;
   margin-top: 0.5rem;
   margin-bottom: 12rem;
 `

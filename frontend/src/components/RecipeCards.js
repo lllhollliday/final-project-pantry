@@ -142,7 +142,7 @@ const Wrapper = styled.div`
   grid-row-gap: 5rem;
 
   @media (max-width: 481px) {
-    width: 90vw;
+   // width: 90vw;
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -145,7 +145,7 @@ const Flex = styled.div`
   justify-content: center;
   flex-direction: column;
 
-  width: 100vw;
+  width: 99vw;
   h2 {
     font-size: 2rem;
     color: #3e6544ce;
@@ -204,6 +204,11 @@ const CardImg = styled.div`
     width: 150%;
     height: 100%;
     transform: scale(1.3);
+
+    :hover{
+      opacity: 0.6;
+      transition: 0.2s;
+    }
 
     @media (max-width: 480px) {
       width: 100%;
