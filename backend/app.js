@@ -56,6 +56,14 @@ app.use(morgan("dev"))
 //   }
 // })
 
+//serve static files
+app.use(express.static("./views/build"))
+
+// index route
+app.get("/", (req, res, next) => {
+  res.sendFile("./views/build/index.html", {root: "."})
+})
+
 // Routes
 app.use("/recipes", recipesRoute)
 app.use("/users", usersRoute)

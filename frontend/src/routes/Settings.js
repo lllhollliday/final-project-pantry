@@ -12,7 +12,7 @@ export default function EditSettings() {
   const SettingsUpdateRequest = (e) => {
     e.preventDefault();
     const data = new FormData(e.target);
-    fetch(`http://localhost:8000/users/${user._id}`, {
+    fetch(`/users/${user._id}`, {
       method: "PATCH",
       headers: {token: localStorage.getItem("token")},
       body: data,

@@ -8,7 +8,7 @@ export default function GlobalContainer(props) {
     const [ sliderItems, setSliderItems] = useState([]);
     console.log(user)
     useEffect( () => {
-        fetch(`http://localhost:8000/recipes?random=true`)
+        fetch(`/recipes?random=true`)
  
         .then(res => res.json())
         .then(result => {
@@ -16,7 +16,7 @@ export default function GlobalContainer(props) {
             setRecipes(result.recipes)
             setSliderItems(result.recipes.slice())
         })
-        fetch(`http://localhost:8000/users/verifyToken`, {method: "GET", headers: {"token": localStorage.getItem("token")}})
+        fetch(`/users/verifyToken`, {method: "GET", headers: {"token": localStorage.getItem("token")}})
         .then(res => res.json())
         .then(result => {
             console.log(result)
