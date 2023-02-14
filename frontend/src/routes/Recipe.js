@@ -1,21 +1,29 @@
 import { useLocation } from "react-router-dom"
 import axios from "axios"
-import {useContext} from "react"
+import { useContext, useState } from "react"
 import { globalContext } from "../context/globalContext"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons"
 import { faHeart as regHeart } from "@fortawesome/free-regular-svg-icons"
 import styled from "styled-components"
+import Modal from "react-modal"
+import { Link } from "react-router-dom"
 
 function Recipe() {
   const { state } = useLocation()
-  const {  user, setUser } = useContext(globalContext)
+  const { user, setUser } = useContext(globalContext)
+
+  const [modalIsOpen, setModalIsOpen] = useState(false)
+
+  const toggleModal = () => {
+    setModalIsOpen(!modalIsOpen)
+  }
 
   const handleLike = async (item) => {
     console.log("item:", item)
     try {
       const res = await axios.put(`http://localhost:8000/users/favourites`, {
-        state,
+        item,
         id: user._id,
       })
       // setFavourite([...favourites, item])
@@ -36,7 +44,7 @@ function Recipe() {
     <FlexWrapper>
       {state && (
         <div>
-          <HeadWrap style={{position:"relative"}}>
+          <HeadWrap style={{ position: "relative" }}>
             {" "}
             <img src={state.image} alt="" />
             <div>
@@ -48,26 +56,57 @@ function Recipe() {
               </p>
               {/* <p>Diet: *need to fix* {state.health}</p>{" "} */}
             </div>
+            <StyledButton
+              onClick={() => {
+                if (user) {
+                  handleLike(state)
+                } else {
+                  toggleModal()
+                }
+              }}
+            >
+              {user?.favourites?.findIndex((fav) => fav.label === state.label) >
+              -1
+                ? like
+                : unlike}
+            </StyledButton>
+            <Modal
+              style={{
+                overlay: {
+                  position: "fixed",
 
-                     <StyledButton
-                onClick={() => {
-                  if (user) {
-                    handleLike(state)
-                  } else {
-                   console.log("Not logged in");
-                  }
-                }}
-              >
-                {user?.favourites?.findIndex(
-                  (fav) => fav.label === state.label
-                ) > -1
-                  ? like
-                  : unlike}
-              </StyledButton>
+                  background: "#ffe8d77f",
+                  opacity: "0.14",
+                },
+                content: {
+                  position: "absolute",
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                  width: "15rem",
+                  height: "10rem",
+                  border: "1px solid #ccc",
 
+                  background: "#ffb803",
+                  overflow: "auto",
+                  WebkitOverflowScrolling: "touch",
+                  borderRadius: "10%",
+                  outline: "none",
+                  padding: "30px",
+                },
+              }}
+              isOpen={modalIsOpen}
+              onRequestClose={toggleModal}
+            >
+              <StyledModalContent>
+                <button onClick={toggleModal}>x</button>
+                <h2>
+                  Please <StyledLinkModal to="/login">login</StyledLinkModal> to
+                  save your favourites.
+                </h2>
+              </StyledModalContent>
+            </Modal>
           </HeadWrap>
-
- 
 
           <Line />
           {/*   <IngWrap> */}
@@ -109,7 +148,7 @@ function Recipe() {
 export default Recipe
 
 const FlexWrapper = styled.div`
-//position: relative;
+  //position: relative;
   margin-top: 4rem;
   display: flex;
   justify-content: center;
@@ -134,7 +173,6 @@ const HeadWrap = styled.div`
     width: 17rem;
     margin-left: 2rem;
     font-weight: 500;
-    
   }
 `
 
@@ -212,3 +250,53 @@ const unlike = (
     }}
   />
 )
+
+const StyledModalContent = styled.div`
+  display: "flex";
+  align-content: "center";
+  justify-content: "center";
+  flex-direction: "column";
+  padding: "10px";
+
+  h2 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+    color: #fff;
+    font-size: 19px;
+    margin-top: 23px;
+    margin-left: "8px";
+  }
+
+  button {
+    font-family: "Roboto", sans-serif;
+    width: 23px;
+    height: 23px;
+    font-size: 16px;
+    border: 1px solid transparent;
+    color: white;
+    font-weight: 400;
+
+    background-color: #ffb803;
+    border-radius: 30%;
+
+    position: absolute;
+    top: 9px;
+    right: 14px;
+
+    :hover {
+      border: 1px solid orange;
+    }
+  }
+`
+
+const StyledLinkModal = styled(Link)`
+  font-family: "Roboto", sans-serif;
+  color: #3e6544ce;
+  text-decoration: none;
+
+  &:hover {
+    color: #fff;
+    text-decoration: underline;
+  }
+`
