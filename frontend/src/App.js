@@ -23,7 +23,7 @@ function App() {
     //sending token to backend
     if(localStorage.getItem("token")){
       const token = localStorage.getItem("token")
-      axios.get("http://localhost:8000/users/verifyToken", {
+      axios.get("/users/verifyToken", {
         headers: {
           "authorization": `Bearer ${token}`
         }

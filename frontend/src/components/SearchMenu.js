@@ -14,7 +14,7 @@ function SearchMenu() {
     console.log(cuisine)
 
     fetch(
-      `http://localhost:8000/recipes?q=${e.target.query.value}&cuisineType=${cuisine}&mealType=${mealType}&health=${health}`
+      `/recipes?q=${e.target.query.value}&cuisineType=${cuisine}&mealType=${mealType}&health=${health}`
     )
       .then((res) => res.json())
       .then((result) => {

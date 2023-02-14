@@ -22,7 +22,7 @@ function Recipe() {
   const handleLike = async (item) => {
     console.log("item:", item)
     try {
-      const res = await axios.put(`http://localhost:8000/users/favourites`, {
+      const res = await axios.put(`/users/favourites`, {
         item,
         id: user._id,
       })

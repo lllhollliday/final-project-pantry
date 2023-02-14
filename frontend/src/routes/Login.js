@@ -23,7 +23,7 @@ const Login = () => {
       firstName: e.target.firstName?.value,
       lastName: e.target.lastName?.value
     }
-    fetch(`http://localhost:8000/users/${isMember ? "login" : "register"}`, {
+    fetch(`/users/${isMember ? "login" : "register"}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user),

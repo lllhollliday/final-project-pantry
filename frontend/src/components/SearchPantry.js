@@ -13,7 +13,7 @@ function SearchPantry({ selectedIng }) {
   console.log(cuisine)
   useEffect(() => {
     fetch(
-      `http://localhost:8000/recipes?q=${selectedIng}&cuisineType=${cuisine}&mealType=${mealType}&health=${health}`
+      `/recipes?q=${selectedIng}&cuisineType=${cuisine}&mealType=${mealType}&health=${health}`
     )
       .then((res) => res.json())
       .then((result) => {

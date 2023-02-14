@@ -21,7 +21,7 @@ export default function Favourites() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await fetch("http://localhost:8000/users/favourites", {
+      const result = await fetch("/users/favourites", {
         method: "GET",
         headers: { token: localStorage.getItem("token") },
       })
@@ -37,7 +37,7 @@ export default function Favourites() {
   const handleLike = async (item) => {
     console.log(item)
     try {
-      const res = await axios.put(`http://localhost:8000/users/favourites`, {
+      const res = await axios.put(`/users/favourites`, {
         item,
         id: user._id,
       })
