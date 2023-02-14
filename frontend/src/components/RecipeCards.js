@@ -88,7 +88,7 @@ export default function RecipeCards() {
                     position: "fixed",
 
                     background: "#ffe8d77f",
-                    opacity: "0.14",
+                    opacity: "0.11",
                   },
                   content: {
                     position: "absolute",

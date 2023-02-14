@@ -76,7 +76,7 @@ function Recipe() {
                   position: "fixed",
 
                   background: "#ffe8d77f",
-                  opacity: "0.14",
+                  opacity: "0.97",
                 },
                 content: {
                   position: "absolute",
@@ -198,19 +198,21 @@ const Line = styled.div`
  */
 const InlineWrap = styled.div`
   display: inline-flex;
-  margin-top: 2rem;
+  margin-top: 1rem;
+  margin-left: -2rem;
 
   li {
     list-style-type: none;
-    font-size: 12px;
+    font-size: 16px;
   }
 `
 
 const Quantity = styled.div`
   font-weight: 500;
+  //margin-left: -2rem;
 `
 const Ing = styled.div`
-  margin-left: 5rem;
+ // margin-left: 5rem;
 `
 const StyledButton = styled.button`
   position: absolute;

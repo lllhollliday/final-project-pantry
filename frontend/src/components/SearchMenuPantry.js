@@ -22,15 +22,7 @@ function SearchMenu({ setQuery,  setMealType }) {
           />
         </SearchWrap>
         <DropDowns>
-{/*           <StyledSelect
-            name="cuisineType"
-            onChange={(e) => setCuisine(e.target.value)}
-          >
-            <option value="">cuisine</option>
-            <option value="italian">italian</option>
-            <option value="french">french</option>
-            <option value="chinese">chinese</option>
-          </StyledSelect> */}
+
           <StyledSelect
             name="mealType"
             onChange={(e) => setMealType(e.target.value)}
@@ -41,27 +33,9 @@ function SearchMenu({ setQuery,  setMealType }) {
             <option value="lunch">lunch</option>
             <option value="dinner">dinner</option>
           </StyledSelect>
-       {/*    <StyledSelect
-            name="health"
-            onChange={(e) => setHealth(e.target.value)}
-          >
-            <option value="">diet</option>
-            <option value="alcohol-free">alc free</option>
-            <option value="dairy-free">Dairy-free</option>
-            <option value="pork-free">Pork-free</option>{" "}
-          </StyledSelect> */}
+
         </DropDowns>
-      {/*   <SortByWrap>
-          <p>SORT BY:</p>
-          <select
-            className="select"
-            name="health"
-            onChange={(e) => setHealth(e.target.value)}
-          >
-            <option value="">date added</option>
-            <option value="alcohol-free">A-Z</option>
-          </select>
-        </SortByWrap> */}
+
 
       </form>
     </div>

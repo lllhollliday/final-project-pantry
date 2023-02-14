@@ -46,9 +46,19 @@ function SearchMenu() {
             onChange={(e) => setCuisine(e.target.value)}
           >
             <option value="">cuisine</option>
-            <option value="italian">italian</option>
-            <option value="french">french</option>
+            <option value="american">american</option>
+            <option value="asian">asian</option>
+            <option value="british">british</option>
+            <option value="caribbean">caribbean</option>
+            <option value="Central Europe">central europe</option>
             <option value="chinese">chinese</option>
+            <option value="french">french</option>
+            <option value="indian">indian</option>
+            <option value="italian">italian</option>
+            <option value="mexican">mexican</option>
+            <option value="Middle Eastern">middle eastern</option>
+            <option value="Mediterranean">mediterranean</option>
+            <option value="nordic">nordic</option>
           </StyledSelect>
           <StyledSelect
             name="mealType"
@@ -56,6 +66,7 @@ function SearchMenu() {
           >
             <option value="">meal type</option>
             <option value="breakfast">breakfast</option>
+            <option value="breakfast/lunch">brunch</option>
             <option value="lunch">lunch</option>
             <option value="dinner">dinner</option>
           </StyledSelect>
@@ -64,9 +75,15 @@ function SearchMenu() {
             onChange={(e) => setHealth(e.target.value)}
           >
             <option value="">diet</option>
-            <option value="alcohol-free">alc free</option>
-            <option value="dairy-free">Dairy-free</option>
-            <option value="pork-free">Pork-free</option>{" "}
+            <option value="gluten-free">gluten-free</option>
+            <option value="egg-free">egg-free</option>
+            <option value="keto-friendly">keto-friendly</option>
+            <option value="low-sugar">low-sugar</option>
+            <option value="alcohol-free">alcohol free</option>
+            <option value="dairy-free">dairy-free</option>
+            <option value="peanut-free">peanut-free</option>
+            <option value="soy-free">soy-free</option>
+            <option value="pork-free">pork-free</option>{" "}
           </StyledSelect>
         </DropDowns>
       </form>

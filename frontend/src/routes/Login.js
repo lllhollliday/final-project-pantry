@@ -43,7 +43,8 @@ const Login = () => {
           console.log(result)
           setUser(result.user)
         } else {
-          toast.error('Already a member. Email is registered.');
+          toast.error("Email already registered. Please sign in!");
+          // this also returns when the user tries to sign in without account. need to fix!!
         }
       })
   }

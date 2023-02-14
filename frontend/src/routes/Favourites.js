@@ -69,26 +69,7 @@ export default function Favourites() {
   
   
 
-  /*   let filteredMealType = favourites.filter((item) => {
-    return item.mealType.includes(mealType)
-  })
-  
-  let filteredRecipes = filteredIng
-    .filter((item) => filteredMealType.includes(item)) */
 
-  /* 
-  let filteredCuisine = favourites.filter((item) => {
-    return item.cuisine.includes(cuisine)
-  })
-
-
-
-  let filteredHealth = favourites.filter((item) => {
-    return item.health.includes(health)
-  })
-
-  
- */
   return (
     <Flex>
       <div className="alignLeft">
@@ -114,6 +95,7 @@ export default function Favourites() {
                       </p>
                     </CardTitle>
                   </TitleTextWrapper>
+                  
                 </StyledLink>
 
                 <StyledButton
