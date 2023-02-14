@@ -56,7 +56,7 @@ router.get("/", async (req, res) => {
           cuisine: item.recipe.cuisine,
           ingredients: item.recipe.ingredients,
           uri: item.recipe.uri,
-          image: `http://localhost:8000/images/${resolvePromises[i].fileName}`,
+          image: `/images/${resolvePromises[i].fileName}`,
         }
       })
       let recipe = []
