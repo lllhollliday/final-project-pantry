@@ -54,7 +54,10 @@ app.use(morgan("dev"))
 //     return res.json("Image not found")
 //   }
 // })
-
+app.use(express.static("./views/build"))
+app.get("/", (req, res, next) => {
+  res.sendFile("./views/build/index.html", {root:"."})
+} )
 // Routes
 app.use("/recipes", recipesRoute)
 app.use("/users", usersRoute)
