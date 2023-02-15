@@ -9,6 +9,7 @@ import {
   addFavoritesItems,
   addIngredientToMyPantry,
   getFavourites,
+  verifyToken,
 } from "../controllers/userscontrollers.js"
 import authenticateToken from "../middleware/authenticateToken.js"
 import { isAdmin } from "../middleware/isAdmin.js"
@@ -17,8 +18,10 @@ const router = express.Router()
 
 // Router Get "/users"
 router.get("/", getAllUsers, isAdmin, authenticateToken)
+router.get('/verifyToken', verifyToken)
 router.get("/favourites", authenticateToken, getFavourites)
 router.get("/:id", authenticateToken, getSingleUser)
+
 
 // Router Post "/users"
 router.post("/register", createUser)
