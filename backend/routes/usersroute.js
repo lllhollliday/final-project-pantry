@@ -17,11 +17,10 @@ import { isAdmin } from "../middleware/isAdmin.js"
 const router = express.Router()
 
 // Router Get "/users"
-router.get("/", getAllUsers, isAdmin, authenticateToken)
-router.get('/verifyToken', verifyToken)
+router.get("/", authenticateToken, isAdmin, getAllUsers)
+router.get("/verifyToken", authenticateToken, verifyToken)
 router.get("/favourites", authenticateToken, getFavourites)
 router.get("/:id", authenticateToken, getSingleUser)
-
 
 // Router Post "/users"
 router.post("/register", createUser)
