@@ -2,13 +2,12 @@ import { Routes, Route } from "react-router-dom"
 import "./App.css"
 import Home from "./routes/Home"
 import Login from "./routes/Login"
-
 import Settings from "./routes/Settings"
 import Recipe from "./routes/Recipe"
 import Profile from "./routes/Profile"
 import Favourites from "./routes/Favourites"
 import MyPantry from "./routes/MyPantry"
-import NavBar from "./components/NavBar"
+import NavBar from "./components/Navigation"
 import { useEffect,useContext } from "react"
 import axios from "axios"
 import { globalContext } from "./context/globalContext"
@@ -35,7 +34,7 @@ function App() {
         console.log(err)
       })
     }
-  }, [ ])
+  }, [])
 
   return (
     <div>

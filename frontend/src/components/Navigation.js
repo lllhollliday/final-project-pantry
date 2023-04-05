@@ -1,12 +1,12 @@
 import { Outlet, NavLink, Navigate } from "react-router-dom"
-
-import styles from "./NavBar.module.css"
+import styles from "./Navigation.module.css"
 import logo from "../media/logo.png"
 import { useContext } from "react"
 import { globalContext } from "../context/globalContext"
 import toast, {Toaster} from "react-hot-toast";
+import { Navbar, Nav, NavDropdown } from "react-bootstrap"
 
-const Navbar = () => {
+const Navigation = () => {
   const { user, setUser } = useContext(globalContext);
   
 
@@ -26,12 +26,15 @@ const Navbar = () => {
     <div>
       <Toaster position="top-center" />
       <Outlet />
-      <nav className={styles["navbar"]}>
+      <Navbar bg="light" expand="lg" className={styles["navbar"]}>
+
         <ul className={styles["navbarLogo"]}>
           <NavLink to="/">
             <img src={logo} alt="Logo" />
           </NavLink>
         </ul>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
         <ul className={styles["navbarLinks"]}>
           {" "}
           {user ? (
@@ -60,9 +63,11 @@ const Navbar = () => {
             </>
           )}
         </ul>
-      </nav>
+  
+        </Navbar.Collapse>
+      </Navbar>
     </div>
   )
 }
 
-export default Navbar
+export default Navigation

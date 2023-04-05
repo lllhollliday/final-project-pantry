@@ -43,8 +43,12 @@ const FlexContainer = styled.div`
     object-fit: cover;
 
     padding: 20px;
-    -webkit-box-shadow: -3px 3px 31px -4px rgba(133, 133, 133, 0.81);
-    box-shadow: -3px 3px 31px -4px rgba(133, 133, 133, 0.81);
+  /*   -webkit-box-shadow: -3px 3px 31px -4px rgba(133, 133, 133, 0.81);
+    box-shadow: -3px 3px 31px -4px rgba(133, 133, 133, 0.81); */
+
+    -webkit-box-shadow: -7px 10px 60px -27px rgba(0,0,0,0.66);
+-moz-box-shadow: -7px 10px 60px -27px rgba(0,0,0,0.66);
+box-shadow: -7px 10px 60px -27px rgba(0,0,0,0.66);
   }
 `
 

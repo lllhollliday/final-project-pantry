@@ -9,13 +9,13 @@ import { faHeart as regHeart } from "@fortawesome/free-regular-svg-icons"
 import SearchMenuPantry from "../components/SearchMenuPantry"
 
 export default function Favourites() {
-  const [cuisine, setCuisine] = useState("")
+
   const [mealType, setMealType] = useState("")
-  const [health, setHealth] = useState("")
+
 
   const [query, setQuery] = useState("")
 
-  const { setRecipes, user, setUser } = useContext(globalContext)
+  const { user, setUser } = useContext(globalContext)
 
   const [favourites, setFavourites] = useState([])
 
@@ -41,7 +41,6 @@ export default function Favourites() {
         item,
         id: user._id,
       })
-      // setFavourite([...favourites, item])
 
       setUser({
         ...user,
